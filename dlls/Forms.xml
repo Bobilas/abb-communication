@@ -1,0 +1,460 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Forms</name>
+    </assembly>
+    <members>
+        <member name="T:Forms.NumericBox">
+            <summary>
+            <see cref="T:System.Windows.Forms.NumericUpDown"/> class with added cue text functionality and other features.
+            </summary>
+        </member>
+        <member name="M:Forms.NumericBox.#ctor">
+            <summary>
+            Initializes a new instance of <see cref="T:Forms.NumericBox"/> class.
+            </summary>
+        </member>
+        <member name="P:Forms.NumericBox.CueText">
+            <summary>
+            Cue text.
+            </summary>
+        </member>
+        <member name="M:Forms.NumericBox.WndProc(System.Windows.Forms.Message@)">
+            <summary>
+            Processes Windows messages.
+            </summary>
+            <param name="m"></param>
+        </member>
+        <member name="M:Forms.PropertyGrid.SortedCategoryAttribute.#ctor(System.String,System.UInt16)">
+            <param name="category">Category name.</param>
+            <param name="categoryPosition">Position from end.</param>
+        </member>
+        <member name="T:Forms.Threading.AbortableBackgroundWorker">
+            <summary>An abortable background worker.</summary>
+        </member>
+        <member name="M:Forms.Threading.AbortableBackgroundWorker.OnDoWork(System.ComponentModel.DoWorkEventArgs)">
+            <summary></summary>
+        </member>
+        <member name="M:Forms.Threading.AbortableBackgroundWorker.Abort">
+            <summary></summary>
+        </member>
+        <member name="T:Forms.Threading.ThreadService">
+            <summary>
+            Provides easy usage of <see cref="T:Forms.Threading.AbortableBackgroundWorker"/>.
+            </summary>
+        </member>
+        <member name="M:Forms.Threading.ThreadService.OnMessageCall(System.String)">
+            <summary>
+            Calls all MessageCall events.
+            </summary>
+            <param name="message">Message call event args.</param>
+        </member>
+        <member name="E:Forms.Threading.ThreadService.MessageCall">
+            <summary>
+            Events to be called on message calls.
+            </summary>
+        </member>
+        <member name="E:Forms.Threading.ThreadService.ThreadStarted">
+            <summary>
+            Events to be called when the thread is started.
+            </summary>
+        </member>
+        <member name="E:Forms.Threading.ThreadService.ThreadCompleted">
+            <summary>
+            Events to be called when the thread is completed
+            </summary>
+        </member>
+        <member name="E:Forms.Threading.ThreadService.Update">
+            <summary>
+            Events to be called when thread update is called.
+            </summary>
+        </member>
+        <member name="T:Forms.Threading.ThreadService.MessageCallEventArgs">
+            <summary>
+            Extension of <see cref="T:System.EventArgs"/> class for the <see cref="E:Forms.Threading.ThreadService.MessageCall"/> event.
+            </summary>
+        </member>
+        <member name="M:Forms.Threading.ThreadService.MessageCallEventArgs.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Forms.Threading.ThreadService.MessageCallEventArgs"/> class.
+            </summary>
+            <param name="message"><see cref="F:Forms.Threading.ThreadService.MessageCallEventArgs.Message"/> value.</param>
+        </member>
+        <member name="F:Forms.Threading.ThreadService.MessageCallEventArgs.Message">
+            <summary>
+            Message to be called.
+            </summary>
+        </member>
+        <member name="M:Forms.Threading.ThreadService.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Forms.Threading.ThreadService"/> class.
+            </summary>
+            <param name="name"><see cref="P:Forms.Threading.ThreadService.Name"/> value.</param>
+        </member>
+        <member name="P:Forms.Threading.ThreadService.Name">
+            <summary>
+            Name of this listener's instance.
+            </summary>
+        </member>
+        <member name="F:Forms.Threading.ThreadService._doCancel">
+            <summary>
+            Breaks thread loop when set to true.
+            </summary>
+        </member>
+        <member name="P:Forms.Threading.ThreadService.UpdateInterval">
+            <summary>
+            Update interval in milliseconds. Default: 100ms.
+            </summary>
+        </member>
+        <member name="P:Forms.Threading.ThreadService.StartDelay">
+            <summary>
+            Start delay in milliseconds. Default: 0ms.
+            </summary>
+        </member>
+        <member name="P:Forms.Threading.ThreadService.DisableThreadSleep">
+            <summary>
+            True will disable thread sleep between updates. 
+            WARNING: setting this without manually managing thread sleep will result in overloaded CPU.
+            </summary>
+        </member>
+        <member name="P:Forms.Threading.ThreadService.IsRunning">
+            <summary>
+            Returns true if the listener is running.
+            </summary>
+        </member>
+        <member name="M:Forms.Threading.ThreadService.Stop">
+            <summary>
+            Stops the listener.
+            </summary>
+        </member>
+        <member name="M:Forms.Threading.ThreadService.Start">
+            <summary>
+            Triggers the listener.
+            </summary>
+        </member>
+        <member name="T:Forms.BetterButton">
+            <summary>
+            System.Windows.Forms.Button class with better functionality.
+            </summary>
+        </member>
+        <member name="M:Forms.BetterButton.#ctor">
+            <summary>
+            Initializes a new instance of the BetterButton class
+            </summary>
+        </member>
+        <member name="T:Forms.Charting.ChartCollection">
+            <summary>
+            Chart collection class
+            </summary>
+        </member>
+        <member name="F:Forms.Charting.ChartCollection.MinYValues">
+            <summary>
+            Minimum values of yAxes. Call ChartCollection.UpdateCharts() to take effect.
+            </summary>
+        </member>
+        <member name="F:Forms.Charting.ChartCollection.MaxYValues">
+            <summary>
+            Maximum values of yAxes. Must call ChartCollection.UpdateCharts() to take effect.
+            </summary>
+        </member>
+        <member name="F:Forms.Charting.ChartCollection.MinXValues">
+            <summary>
+            Minimum values of xAxis. Must call ChartCollection.UpdateCharts() to take effect.
+            </summary>
+        </member>
+        <member name="F:Forms.Charting.ChartCollection.MaxXValues">
+            <summary>
+            Maximum values of xAxis. Must call ChartCollection.UpdateCharts() to take effect.
+            </summary>
+        </member>
+        <member name="M:Forms.Charting.ChartCollection.SetXBoundsGlobal(System.Double,System.Double)">
+            <summary>
+            Sets the specified X values for all charts in ChartCollection. Call ChartCollection.UpdateCharts() to take effect.
+            </summary>
+            <param name="minXValue">Default to keep min bounds.</param>
+            <param name="maxXValue">Default to keep max bounds.</param>
+        </member>
+        <member name="M:Forms.Charting.ChartCollection.ResetBounds">
+            <summary>
+            Resets charts' limits.
+            </summary>
+        </member>
+        <member name="F:Forms.Charting.ChartCollection.Series">
+            <summary>
+            All series of all charts. Must be added to the charts manually.
+            </summary>
+        </member>
+        <member name="M:Forms.Charting.ChartCollection.AddPointToSeries(System.Int32,System.Windows.Forms.DataVisualization.Charting.DataPoint)">
+            <summary>
+            Adds a point at the end of the series.
+            </summary>
+            <param name="seriesIndex">The series' index.</param>
+            <param name="point">The point to add.</param>
+        </member>
+        <member name="M:Forms.Charting.ChartCollection.AddPointToSeries(System.Int32,System.Double,System.Double)">
+            <summary>
+            Adds a point at the end of the series.
+            </summary>
+            <param name="seriesIndex">The series' index.</param>
+            <param name="xValue">X value of the point.</param>
+            <param name="yValue">Y value of the pointd.</param>
+        </member>
+        <member name="M:Forms.Charting.ChartCollection.ClearSeries">
+            <summary>
+            Clears all series.
+            </summary>
+        </member>
+        <member name="M:Forms.Charting.ChartCollection.ClearSeriesRange(System.Int32,System.Int32)">
+            <summary>
+            Clears all series in the specified range.
+            </summary>
+            <param name="startIndex">First series to clear.</param>
+            <param name="endIndex">Last series to clear.</param>
+        </member>
+        <member name="M:Forms.Charting.ChartCollection.ClearSeriesMultiple(System.Int32[])">
+            <summary>
+            Clears the specified series.
+            </summary>
+            <param name="seriesIndexes">The series to clear.</param>
+        </member>
+        <member name="M:Forms.Charting.ChartCollection.AddSeriesToChart(System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            Adds series to chart.
+            </summary>
+            <param name="chartIndex">The target chart.</param>
+            <param name="seriesIndex">The series to be added.</param>
+            <param name="addChartReference">Adds chart reference to the series for automatic yAxis bounds if true.</param>
+        </member>
+        <member name="M:Forms.Charting.ChartCollection.SetSeriesVisibility(System.Int32,System.Boolean)">
+            <summary>
+            Sets the series' visibility in charts.
+            </summary>
+            <param name="seriesIndex">The series' index.</param>
+            <param name="visible">The series' visibility.</param>
+        </member>
+        <member name="M:Forms.Charting.ChartCollection.#ctor(Forms.Charting.ZoomableChart[])">
+            <summary>
+            Creates chart collection class instance and adds all given charts to the list.
+            </summary>
+            <param name="charts">The charts to be added.</param>
+        </member>
+        <member name="M:Forms.Charting.ChartCollection.Add(Forms.Charting.ZoomableChart)">
+            <summary>
+            Adds a chart to the end of the list.
+            </summary>
+            <param name="chart">The chart to be added.</param>
+        </member>
+        <member name="M:Forms.Charting.ChartCollection.AddMultiple(Forms.Charting.ZoomableChart[])">
+            <summary>
+            Adds multiple charts to the end of the list.
+            </summary>
+            <param name="args">The charts to be added.</param>
+        </member>
+        <member name="M:Forms.Charting.ChartCollection.ResetZoom">
+            <summary>
+            Resets charts' zoom.
+            </summary>
+        </member>
+        <member name="M:Forms.Charting.ChartCollection.Reset">
+            <summary>
+            Resets charts' limits, zoom and clears all series.
+            </summary>
+        </member>
+        <member name="M:Forms.Charting.ChartCollection.UpdateCharts">
+            <summary>
+            Updates charts' bounds (limits).
+            </summary>
+        </member>
+        <member name="M:Forms.Charting.ChartCollection.SetStartTime(System.DateTime)">
+            <summary>
+            Sets the start time for all charts.
+            </summary>
+            <param name="startTime"></param>
+        </member>
+        <member name="M:Forms.Charting.ChartCollection.SetZoomSpeedGlobal(System.Double)">
+            <summary>
+            Sets mouse wheel zoom speed for all charts. 1 to disable.
+            </summary>
+            <param name="zoomSpeed">Mouse wheel zoom speed. 1.15 default. 1 to disable.</param>
+        </member>
+        <member name="T:Forms.Charting.ZoomableChart">
+            <summary>
+            System.Windows.Forms.DataVisualization.Charting.Chart class with added zoom functionality.
+            </summary>
+        </member>
+        <member name="P:Forms.Charting.ZoomableChart.StartTime">
+            <summary>
+            Start time for the secondary time axis.
+            </summary>
+        </member>
+        <member name="P:Forms.Charting.ZoomableChart.DatetimeAxisEnabled">
+            <summary>
+            Enables or disables the secondary time axis.
+            </summary>
+        </member>
+        <member name="M:Forms.Charting.ZoomableChart.SetAxisBounds(System.Windows.Forms.DataVisualization.Charting.AxisName,System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType,System.Double,System.Double)">
+            <summary>
+            Sets the specified bounds for the axis.
+            </summary>
+        </member>
+        <member name="P:Forms.Charting.ZoomableChart.AxisXIntervalCount">
+            <summary>
+            Interval count for xAxis.
+            </summary>
+        </member>
+        <member name="P:Forms.Charting.ZoomableChart.AxisYIntervalCount">
+            <summary>
+            Interval count for yAxis.
+            </summary>
+        </member>
+        <member name="M:Forms.Charting.ZoomableChart.SetAxisInterval(System.Windows.Forms.DataVisualization.Charting.AxisName,System.Double)">
+            <summary>
+            Sets the specified interval for the axis.
+            </summary>
+            <param name="axis">The axis for which the interval is set.</param>
+            <param name="interval">0 to set to default.</param>
+        </member>
+        <member name="F:Forms.Charting.ZoomableChart._selectingZoomArea">
+            <summary>
+            True if currently selecting zoom area.
+            </summary>
+        </member>
+        <member name="F:Forms.Charting.ZoomableChart._draggingZoomArea">
+            <summary>
+            True if currently dragging zoom area.
+            </summary>
+        </member>
+        <member name="F:Forms.Charting.ZoomableChart._zoomY2XRatio">
+            <summary>
+            xAxis / yAxis
+            </summary>
+        </member>
+        <member name="P:Forms.Charting.ZoomableChart.ZoomSpeed">
+            <summary>
+            Defines mouse wheel zoom speed. Set to 1 to disable it.
+            </summary>
+        </member>
+        <member name="F:Forms.Charting.ZoomableChart.GroupedCharts">
+            <summary>
+            Grouped charts whose zoom is updated whenever this chart is zoomed
+            </summary>
+        </member>
+        <member name="M:Forms.Charting.ZoomableChart.ResetZoom">
+            <summary>
+            Resets chart's zoom.
+            </summary>
+        </member>
+        <member name="M:Forms.Charting.ZoomableChart.UpdateZoom(System.Double,System.Double)">
+            <summary>
+            Updates chart's zoom by the xAxis.
+            </summary>
+            <param name="x_start"></param>
+            <param name="x_size"></param>
+        </member>
+        <member name="M:Forms.Charting.ZoomableChart.IsZoomed">
+            <summary>
+            Returns whether the chart is zoomed or not.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Forms.Charting.ZoomableChart.#ctor">
+            <summary>
+            Initializes a new instance of ZoomableChart class.
+            </summary>
+        </member>
+        <member name="P:Forms.Charting.ZoomableChart.ChartAreas">
+            <summary>
+            Gets a read-only ChartAreaCollection object that is used to store ChartArea objects.
+            </summary>
+        </member>
+        <member name="P:Forms.Charting.ZoomableChart.Legends">
+            <summary>
+            Gets or sets a LegendCollection that stores all Legend objects used by the Chart control.
+            </summary>
+        </member>
+        <member name="P:Forms.Charting.ZoomableChart.Series">
+            <summary>
+            Gets a SeriesCollection object, which contains Forms.Series objects.
+            </summary>
+        </member>
+        <member name="P:Forms.Charting.ZoomableChart.AxisXIntervalType">
+            <summary>
+            Date time interval type for X axis.
+            </summary>
+        </member>
+        <member name="F:Forms.Charting.ZoomableChart.Area">
+            <summary>
+            The one and only ChartArea the chart works in.
+            </summary>
+        </member>
+        <member name="F:Forms.Charting.ZoomableChart.Legend">
+            <summary>
+            The legend of the chart.
+            </summary>
+        </member>
+        <member name="T:Forms.Charting.Series">
+            <summary>
+            System.Windows.Forms.DataVisualization.Charting.Series class with added curve types.
+            </summary>
+        </member>
+        <member name="M:Forms.Charting.Series.#ctor">
+            <summary>
+            Initializes a new instance of the Forms.Series class.
+            </summary>
+        </member>
+        <member name="M:Forms.Charting.Series.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the Forms.Series class with the specified series name.
+            </summary>
+        </member>
+        <member name="M:Forms.Charting.Series.#ctor(System.String,System.Windows.Forms.DataVisualization.Charting.SeriesChartType,System.Drawing.Color,System.Int32,System.Windows.Forms.DataVisualization.Charting.AxisType)">
+            <summary>
+            Initializes a new instance of the Forms.Series class with the specified curve type, marker step and yAxisType.
+            </summary>
+        </member>
+        <member name="F:Forms.Charting.Series.Charts">
+            <summary>
+            The charts the series appears in.
+            </summary>
+        </member>
+        <member name="M:Forms.Charting.Series.SetCurveType(System.Windows.Forms.DataVisualization.Charting.SeriesChartType,System.Drawing.Color,System.Int32)">
+            <summary>
+            Sets the curve type of this series.
+            </summary>
+            <param name="type">The type of series.</param>
+            <param name="color">The color of series.</param>
+            <param name="step">The marker step. 0 to disable markers.</param>
+        </member>
+        <member name="T:Forms.CueTextBox">
+            <summary>
+            <see cref="T:System.Windows.Forms.TextBox"/> class with added cue text functionality and other features.
+            </summary>
+        </member>
+        <member name="M:Forms.CueTextBox.#ctor">
+            <summary>
+            Initializes a new instance of <see cref="T:Forms.CueTextBox"/> class.
+            </summary>
+        </member>
+        <member name="P:Forms.CueTextBox.OnlyAllowNumbers">
+            <summary>
+            Text box only allows numbers, can be with decimal point.
+            </summary>
+        </member>
+        <member name="P:Forms.CueTextBox.OnlyAllowDigits">
+            <summary>
+            Text box only allows digits, without decimal point.
+            </summary>
+        </member>
+        <member name="P:Forms.CueTextBox.CueText">
+            <summary>
+            Cue text.
+            </summary>
+        </member>
+        <member name="M:Forms.CueTextBox.WndProc(System.Windows.Forms.Message@)">
+            <summary>
+            Processes Windows messages.
+            </summary>
+            <param name="m"></param>
+        </member>
+    </members>
+</doc>

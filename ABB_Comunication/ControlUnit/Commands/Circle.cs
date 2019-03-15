@@ -38,7 +38,9 @@ namespace ABB_Comunication
 
             Logger.InvokeLog($"Drawing circle. Radius: {radius}");
 
-            int count = 20;
+            int count = 64;
+            double length = radius * 2 * Math.PI;
+            double step = length / count;
 
             for (int i = 0; i < count; i++)
             {
@@ -47,19 +49,19 @@ namespace ABB_Comunication
                 switch (plane)
                 {
                     case CirclePlane.XY:
-                        if (!TryMove(Math.Sin(angle) * radius, Math.Cos(angle) * radius, 0, false))
+                        if (!TryMove(Math.Sin(angle) * step, Math.Cos(angle) * step, 0, false))
                         {
                             return false;
                         }
                         break;
                     case CirclePlane.YZ:
-                        if (!TryMove(0, Math.Cos(angle) * radius, Math.Sin(angle) * radius, false))
+                        if (!TryMove(0, Math.Cos(angle) * step, Math.Sin(angle) * step, false))
                         {
                             return false;
                         }
                         break;
                     case CirclePlane.XZ:
-                        if (!TryMove(Math.Sin(angle) * radius, 0, Math.Cos(angle) * radius, false))
+                        if (!TryMove(Math.Sin(angle) * step, 0, Math.Cos(angle) * step, false))
                         {
                             return false;
                         }
@@ -67,9 +69,26 @@ namespace ABB_Comunication
                 }
             }
 
-            if (!TryMove(radius, 0, 0, false))
+            switch (plane)
             {
-                return false;
+                case CirclePlane.XY:
+                    if (!TryMove(radius, 0, 0, false))
+                    {
+                        return false;
+                    }
+                    break;
+                case CirclePlane.YZ:
+                    if (!TryMove(0, 0, radius, false))
+                    {
+                        return false;
+                    }
+                    break;
+                case CirclePlane.XZ:
+                    if (!TryMove(radius, 0, 0, false))
+                    {
+                        return false;
+                    }
+                    break;
             }
 
             return true;

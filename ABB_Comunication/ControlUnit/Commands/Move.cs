@@ -61,7 +61,7 @@ namespace ABB_Comunication
 
             if (executeBool.Value)
             {
-                return TryMove(targetPosition);
+                return TryMove(targetPosition, doLog);
             }
 
             xNum.Value = targetPosition.X;

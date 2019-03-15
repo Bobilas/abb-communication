@@ -5,22 +5,65 @@ namespace ABB_Comunication
 {
     public partial class ControlUnit
     {
-        public bool TryCircle(decimal radius) => TryCircle((double)radius);
-        public bool TryCircle(double radius)
+        public enum CirclePlane
         {
-            if (!TryMove(-radius, 0, 0, false))
+            XY,
+            YZ,
+            XZ
+        }
+        public bool TryCircle(CirclePlane plane, decimal radius) => TryCircle(plane, (double)radius);
+        public bool TryCircle(CirclePlane plane, double radius)
+        {
+            switch (plane)
             {
-                return false;
+                case CirclePlane.XY:
+                    if (!TryMove(-radius, 0, 0, false))
+                    {
+                        return false;
+                    }
+                    break;
+                case CirclePlane.YZ:
+                    if (!TryMove(0, 0, -radius, false))
+                    {
+                        return false;
+                    }
+                    break;
+                case CirclePlane.XZ:
+                    if (!TryMove(-radius, 0, 0, false))
+                    {
+                        return false;
+                    }
+                    break;
             }
 
             Logger.InvokeLog($"Drawing circle. Radius: {radius}");
+
             int count = 20;
+
             for (int i = 0; i < count; i++)
             {
                 double angle = 2 * Math.PI * i / count;
-                if (!TryMove(Math.Sin(angle) * radius, Math.Cos(angle) * radius, 0, false))
+
+                switch (plane)
                 {
-                    return false;
+                    case CirclePlane.XY:
+                        if (!TryMove(Math.Sin(angle) * radius, Math.Cos(angle) * radius, 0, false))
+                        {
+                            return false;
+                        }
+                        break;
+                    case CirclePlane.YZ:
+                        if (!TryMove(0, Math.Cos(angle) * radius, Math.Sin(angle) * radius, false))
+                        {
+                            return false;
+                        }
+                        break;
+                    case CirclePlane.XZ:
+                        if (!TryMove(Math.Sin(angle) * radius, 0, Math.Cos(angle) * radius, false))
+                        {
+                            return false;
+                        }
+                        break;
                 }
             }
 

@@ -56,6 +56,9 @@
             this.NumericBox_CircleRadius = new Forms.NumericBox();
             this.Label_CircleRadius = new System.Windows.Forms.Label();
             this.Button_Circle = new System.Windows.Forms.Button();
+            this.RadioButton_XY = new System.Windows.Forms.RadioButton();
+            this.RadioButton_YZ = new System.Windows.Forms.RadioButton();
+            this.RadioButton_XZ = new System.Windows.Forms.RadioButton();
             this.GroupBox_Move.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NumericBox_Z)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NumericBox_Y)).BeginInit();
@@ -70,9 +73,10 @@
             // Button_Connection
             // 
             this.Button_Connection.Enabled = false;
-            this.Button_Connection.Location = new System.Drawing.Point(12, 109);
+            this.Button_Connection.Location = new System.Drawing.Point(16, 134);
+            this.Button_Connection.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Button_Connection.Name = "Button_Connection";
-            this.Button_Connection.Size = new System.Drawing.Size(75, 23);
+            this.Button_Connection.Size = new System.Drawing.Size(100, 28);
             this.Button_Connection.TabIndex = 1;
             this.Button_Connection.Text = "Connect";
             this.Button_Connection.UseVisualStyleBackColor = true;
@@ -81,9 +85,10 @@
             // Button_Move
             // 
             this.Button_Move.Enabled = false;
-            this.Button_Move.Location = new System.Drawing.Point(26, 99);
+            this.Button_Move.Location = new System.Drawing.Point(35, 122);
+            this.Button_Move.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Button_Move.Name = "Button_Move";
-            this.Button_Move.Size = new System.Drawing.Size(90, 23);
+            this.Button_Move.Size = new System.Drawing.Size(120, 28);
             this.Button_Move.TabIndex = 7;
             this.Button_Move.Text = "Send command";
             this.Button_Move.UseVisualStyleBackColor = true;
@@ -92,9 +97,10 @@
             // Button_StartRapid
             // 
             this.Button_StartRapid.Enabled = false;
-            this.Button_StartRapid.Location = new System.Drawing.Point(174, 109);
+            this.Button_StartRapid.Location = new System.Drawing.Point(232, 134);
+            this.Button_StartRapid.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Button_StartRapid.Name = "Button_StartRapid";
-            this.Button_StartRapid.Size = new System.Drawing.Size(75, 23);
+            this.Button_StartRapid.Size = new System.Drawing.Size(100, 28);
             this.Button_StartRapid.TabIndex = 8;
             this.Button_StartRapid.Text = "Start RAPID";
             this.Button_StartRapid.UseVisualStyleBackColor = true;
@@ -103,9 +109,10 @@
             // Button_StopRapid
             // 
             this.Button_StopRapid.Enabled = false;
-            this.Button_StopRapid.Location = new System.Drawing.Point(255, 109);
+            this.Button_StopRapid.Location = new System.Drawing.Point(340, 134);
+            this.Button_StopRapid.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Button_StopRapid.Name = "Button_StopRapid";
-            this.Button_StopRapid.Size = new System.Drawing.Size(75, 23);
+            this.Button_StopRapid.Size = new System.Drawing.Size(100, 28);
             this.Button_StopRapid.TabIndex = 9;
             this.Button_StopRapid.Text = "Stop RAPID";
             this.Button_StopRapid.UseVisualStyleBackColor = true;
@@ -114,36 +121,40 @@
             // Label_X
             // 
             this.Label_X.AutoSize = true;
-            this.Label_X.Location = new System.Drawing.Point(6, 23);
+            this.Label_X.Location = new System.Drawing.Point(8, 28);
+            this.Label_X.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Label_X.Name = "Label_X";
-            this.Label_X.Size = new System.Drawing.Size(14, 13);
+            this.Label_X.Size = new System.Drawing.Size(17, 17);
             this.Label_X.TabIndex = 10;
             this.Label_X.Text = "X";
             // 
             // Label_Y
             // 
             this.Label_Y.AutoSize = true;
-            this.Label_Y.Location = new System.Drawing.Point(6, 49);
+            this.Label_Y.Location = new System.Drawing.Point(8, 60);
+            this.Label_Y.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Label_Y.Name = "Label_Y";
-            this.Label_Y.Size = new System.Drawing.Size(14, 13);
+            this.Label_Y.Size = new System.Drawing.Size(17, 17);
             this.Label_Y.TabIndex = 11;
             this.Label_Y.Text = "Y";
             // 
             // Label_Z
             // 
             this.Label_Z.AutoSize = true;
-            this.Label_Z.Location = new System.Drawing.Point(6, 75);
+            this.Label_Z.Location = new System.Drawing.Point(8, 92);
+            this.Label_Z.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Label_Z.Name = "Label_Z";
-            this.Label_Z.Size = new System.Drawing.Size(14, 13);
+            this.Label_Z.Size = new System.Drawing.Size(17, 17);
             this.Label_Z.TabIndex = 12;
             this.Label_Z.Text = "Z";
             // 
             // Button_Square
             // 
             this.Button_Square.Enabled = false;
-            this.Button_Square.Location = new System.Drawing.Point(52, 46);
+            this.Button_Square.Location = new System.Drawing.Point(69, 57);
+            this.Button_Square.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Button_Square.Name = "Button_Square";
-            this.Button_Square.Size = new System.Drawing.Size(91, 23);
+            this.Button_Square.Size = new System.Drawing.Size(121, 28);
             this.Button_Square.TabIndex = 13;
             this.Button_Square.Text = "Send command";
             this.Button_Square.UseVisualStyleBackColor = true;
@@ -152,17 +163,19 @@
             // Label_SquareSide
             // 
             this.Label_SquareSide.AutoSize = true;
-            this.Label_SquareSide.Location = new System.Drawing.Point(6, 23);
+            this.Label_SquareSide.Location = new System.Drawing.Point(8, 28);
+            this.Label_SquareSide.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Label_SquareSide.Name = "Label_SquareSide";
-            this.Label_SquareSide.Size = new System.Drawing.Size(28, 13);
+            this.Label_SquareSide.Size = new System.Drawing.Size(36, 17);
             this.Label_SquareSide.TabIndex = 15;
             this.Label_SquareSide.Text = "Side";
             // 
             // Button_Scan
             // 
-            this.Button_Scan.Location = new System.Drawing.Point(93, 109);
+            this.Button_Scan.Location = new System.Drawing.Point(124, 134);
+            this.Button_Scan.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Button_Scan.Name = "Button_Scan";
-            this.Button_Scan.Size = new System.Drawing.Size(75, 23);
+            this.Button_Scan.Size = new System.Drawing.Size(100, 28);
             this.Button_Scan.TabIndex = 16;
             this.Button_Scan.Text = "Scan";
             this.Button_Scan.UseVisualStyleBackColor = true;
@@ -170,11 +183,12 @@
             // 
             // LogBox
             // 
-            this.LogBox.Location = new System.Drawing.Point(12, 138);
+            this.LogBox.Location = new System.Drawing.Point(16, 170);
+            this.LogBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.LogBox.Multiline = true;
             this.LogBox.Name = "LogBox";
             this.LogBox.ReadOnly = true;
-            this.LogBox.Size = new System.Drawing.Size(346, 174);
+            this.LogBox.Size = new System.Drawing.Size(460, 213);
             this.LogBox.TabIndex = 17;
             // 
             // GroupBox_Move
@@ -186,9 +200,11 @@
             this.GroupBox_Move.Controls.Add(this.Label_Y);
             this.GroupBox_Move.Controls.Add(this.Label_Z);
             this.GroupBox_Move.Controls.Add(this.Button_Move);
-            this.GroupBox_Move.Location = new System.Drawing.Point(377, 138);
+            this.GroupBox_Move.Location = new System.Drawing.Point(503, 170);
+            this.GroupBox_Move.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.GroupBox_Move.Name = "GroupBox_Move";
-            this.GroupBox_Move.Size = new System.Drawing.Size(122, 131);
+            this.GroupBox_Move.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.GroupBox_Move.Size = new System.Drawing.Size(163, 172);
             this.GroupBox_Move.TabIndex = 18;
             this.GroupBox_Move.TabStop = false;
             this.GroupBox_Move.Text = "Move";
@@ -196,42 +212,45 @@
             // NumericBox_Z
             // 
             this.NumericBox_Z.CueText = null;
-            this.NumericBox_Z.Location = new System.Drawing.Point(26, 73);
+            this.NumericBox_Z.Location = new System.Drawing.Point(35, 90);
+            this.NumericBox_Z.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.NumericBox_Z.Minimum = new decimal(new int[] {
             100,
             0,
             0,
             -2147483648});
             this.NumericBox_Z.Name = "NumericBox_Z";
-            this.NumericBox_Z.Size = new System.Drawing.Size(90, 20);
+            this.NumericBox_Z.Size = new System.Drawing.Size(120, 22);
             this.NumericBox_Z.TabIndex = 18;
             this.NumericBox_Z.ValueChanged += new System.EventHandler(this.NumericBox_Z_ValueChanged);
             // 
             // NumericBox_Y
             // 
             this.NumericBox_Y.CueText = null;
-            this.NumericBox_Y.Location = new System.Drawing.Point(26, 47);
+            this.NumericBox_Y.Location = new System.Drawing.Point(35, 58);
+            this.NumericBox_Y.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.NumericBox_Y.Minimum = new decimal(new int[] {
             100,
             0,
             0,
             -2147483648});
             this.NumericBox_Y.Name = "NumericBox_Y";
-            this.NumericBox_Y.Size = new System.Drawing.Size(90, 20);
+            this.NumericBox_Y.Size = new System.Drawing.Size(120, 22);
             this.NumericBox_Y.TabIndex = 17;
             this.NumericBox_Y.ValueChanged += new System.EventHandler(this.NumericBox_Y_ValueChanged);
             // 
             // NumericBox_X
             // 
             this.NumericBox_X.CueText = null;
-            this.NumericBox_X.Location = new System.Drawing.Point(26, 21);
+            this.NumericBox_X.Location = new System.Drawing.Point(35, 26);
+            this.NumericBox_X.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.NumericBox_X.Minimum = new decimal(new int[] {
             100,
             0,
             0,
             -2147483648});
             this.NumericBox_X.Name = "NumericBox_X";
-            this.NumericBox_X.Size = new System.Drawing.Size(90, 20);
+            this.NumericBox_X.Size = new System.Drawing.Size(120, 22);
             this.NumericBox_X.TabIndex = 16;
             this.NumericBox_X.ValueChanged += new System.EventHandler(this.NumericBox_X_ValueChanged);
             // 
@@ -240,9 +259,11 @@
             this.GroupBox_Square.Controls.Add(this.NumericBox_SquareSide);
             this.GroupBox_Square.Controls.Add(this.Label_SquareSide);
             this.GroupBox_Square.Controls.Add(this.Button_Square);
-            this.GroupBox_Square.Location = new System.Drawing.Point(505, 219);
+            this.GroupBox_Square.Location = new System.Drawing.Point(673, 350);
+            this.GroupBox_Square.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.GroupBox_Square.Name = "GroupBox_Square";
-            this.GroupBox_Square.Size = new System.Drawing.Size(149, 75);
+            this.GroupBox_Square.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.GroupBox_Square.Size = new System.Drawing.Size(199, 92);
             this.GroupBox_Square.TabIndex = 19;
             this.GroupBox_Square.TabStop = false;
             this.GroupBox_Square.Text = "Square";
@@ -250,9 +271,10 @@
             // NumericBox_SquareSide
             // 
             this.NumericBox_SquareSide.CueText = null;
-            this.NumericBox_SquareSide.Location = new System.Drawing.Point(52, 21);
+            this.NumericBox_SquareSide.Location = new System.Drawing.Point(69, 26);
+            this.NumericBox_SquareSide.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.NumericBox_SquareSide.Name = "NumericBox_SquareSide";
-            this.NumericBox_SquareSide.Size = new System.Drawing.Size(91, 20);
+            this.NumericBox_SquareSide.Size = new System.Drawing.Size(121, 22);
             this.NumericBox_SquareSide.TabIndex = 13;
             this.NumericBox_SquareSide.ValueChanged += new System.EventHandler(this.NumericBox_SquareSide_ValueChanged);
             // 
@@ -268,13 +290,14 @@
             this.Column_SystemName,
             this.Column_Version,
             this.Column_ControllerName});
-            this.DataGrid_Controllers.Location = new System.Drawing.Point(12, 12);
+            this.DataGrid_Controllers.Location = new System.Drawing.Point(16, 15);
+            this.DataGrid_Controllers.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.DataGrid_Controllers.MultiSelect = false;
             this.DataGrid_Controllers.Name = "DataGrid_Controllers";
             this.DataGrid_Controllers.ReadOnly = true;
             this.DataGrid_Controllers.RowHeadersVisible = false;
             this.DataGrid_Controllers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DataGrid_Controllers.Size = new System.Drawing.Size(654, 91);
+            this.DataGrid_Controllers.Size = new System.Drawing.Size(872, 112);
             this.DataGrid_Controllers.TabIndex = 20;
             this.DataGrid_Controllers.SelectionChanged += new System.EventHandler(this.DataGrid_Controllers_SelectionChanged);
             // 
@@ -319,12 +342,17 @@
             // 
             // GroupBox_Circle
             // 
+            this.GroupBox_Circle.Controls.Add(this.RadioButton_XZ);
+            this.GroupBox_Circle.Controls.Add(this.RadioButton_YZ);
+            this.GroupBox_Circle.Controls.Add(this.RadioButton_XY);
             this.GroupBox_Circle.Controls.Add(this.NumericBox_CircleRadius);
             this.GroupBox_Circle.Controls.Add(this.Label_CircleRadius);
             this.GroupBox_Circle.Controls.Add(this.Button_Circle);
-            this.GroupBox_Circle.Location = new System.Drawing.Point(505, 138);
+            this.GroupBox_Circle.Location = new System.Drawing.Point(673, 170);
+            this.GroupBox_Circle.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.GroupBox_Circle.Name = "GroupBox_Circle";
-            this.GroupBox_Circle.Size = new System.Drawing.Size(149, 75);
+            this.GroupBox_Circle.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.GroupBox_Circle.Size = new System.Drawing.Size(199, 172);
             this.GroupBox_Circle.TabIndex = 20;
             this.GroupBox_Circle.TabStop = false;
             this.GroupBox_Circle.Text = "Circle";
@@ -332,41 +360,78 @@
             // NumericBox_CircleRadius
             // 
             this.NumericBox_CircleRadius.CueText = null;
-            this.NumericBox_CircleRadius.Location = new System.Drawing.Point(52, 21);
+            this.NumericBox_CircleRadius.Location = new System.Drawing.Point(69, 26);
+            this.NumericBox_CircleRadius.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.NumericBox_CircleRadius.Maximum = new decimal(new int[] {
             60,
             0,
             0,
             0});
             this.NumericBox_CircleRadius.Name = "NumericBox_CircleRadius";
-            this.NumericBox_CircleRadius.Size = new System.Drawing.Size(91, 20);
+            this.NumericBox_CircleRadius.Size = new System.Drawing.Size(121, 22);
             this.NumericBox_CircleRadius.TabIndex = 13;
             this.NumericBox_CircleRadius.ValueChanged += new System.EventHandler(this.NumericBox_CircleRadius_ValueChanged);
             // 
             // Label_CircleRadius
             // 
             this.Label_CircleRadius.AutoSize = true;
-            this.Label_CircleRadius.Location = new System.Drawing.Point(6, 23);
+            this.Label_CircleRadius.Location = new System.Drawing.Point(8, 28);
+            this.Label_CircleRadius.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Label_CircleRadius.Name = "Label_CircleRadius";
-            this.Label_CircleRadius.Size = new System.Drawing.Size(40, 13);
+            this.Label_CircleRadius.Size = new System.Drawing.Size(52, 17);
             this.Label_CircleRadius.TabIndex = 15;
             this.Label_CircleRadius.Text = "Radius";
             // 
             // Button_Circle
             // 
-            this.Button_Circle.Location = new System.Drawing.Point(52, 44);
+            this.Button_Circle.Location = new System.Drawing.Point(69, 54);
+            this.Button_Circle.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Button_Circle.Name = "Button_Circle";
-            this.Button_Circle.Size = new System.Drawing.Size(91, 23);
+            this.Button_Circle.Size = new System.Drawing.Size(121, 28);
             this.Button_Circle.TabIndex = 13;
             this.Button_Circle.Text = "Send command";
             this.Button_Circle.UseVisualStyleBackColor = true;
             this.Button_Circle.Click += new System.EventHandler(this.Button_Circle_Click);
             // 
+            // RadioButton_XY
+            // 
+            this.RadioButton_XY.AutoSize = true;
+            this.RadioButton_XY.Checked = true;
+            this.RadioButton_XY.Location = new System.Drawing.Point(69, 88);
+            this.RadioButton_XY.Name = "RadioButton_XY";
+            this.RadioButton_XY.Size = new System.Drawing.Size(47, 21);
+            this.RadioButton_XY.TabIndex = 21;
+            this.RadioButton_XY.TabStop = true;
+            this.RadioButton_XY.Text = "XY";
+            this.RadioButton_XY.UseVisualStyleBackColor = true;
+            // 
+            // RadioButton_YZ
+            // 
+            this.RadioButton_YZ.AutoSize = true;
+            this.RadioButton_YZ.Location = new System.Drawing.Point(69, 115);
+            this.RadioButton_YZ.Name = "RadioButton_YZ";
+            this.RadioButton_YZ.Size = new System.Drawing.Size(47, 21);
+            this.RadioButton_YZ.TabIndex = 21;
+            this.RadioButton_YZ.TabStop = true;
+            this.RadioButton_YZ.Text = "YZ";
+            this.RadioButton_YZ.UseVisualStyleBackColor = true;
+            // 
+            // RadioButton_XZ
+            // 
+            this.RadioButton_XZ.AutoSize = true;
+            this.RadioButton_XZ.Location = new System.Drawing.Point(69, 140);
+            this.RadioButton_XZ.Name = "RadioButton_XZ";
+            this.RadioButton_XZ.Size = new System.Drawing.Size(47, 21);
+            this.RadioButton_XZ.TabIndex = 21;
+            this.RadioButton_XZ.TabStop = true;
+            this.RadioButton_XZ.Text = "XZ";
+            this.RadioButton_XZ.UseVisualStyleBackColor = true;
+            // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(681, 327);
+            this.ClientSize = new System.Drawing.Size(908, 562);
             this.Controls.Add(this.GroupBox_Circle);
             this.Controls.Add(this.DataGrid_Controllers);
             this.Controls.Add(this.GroupBox_Square);
@@ -377,6 +442,7 @@
             this.Controls.Add(this.Button_StartRapid);
             this.Controls.Add(this.Button_Connection);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "MainForm";
             this.Text = "ABB robot controller manager";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
@@ -426,6 +492,9 @@
         private Forms.NumericBox NumericBox_CircleRadius;
         private System.Windows.Forms.Label Label_CircleRadius;
         private System.Windows.Forms.Button Button_Circle;
+        private System.Windows.Forms.RadioButton RadioButton_XZ;
+        private System.Windows.Forms.RadioButton RadioButton_YZ;
+        private System.Windows.Forms.RadioButton RadioButton_XY;
     }
 }
 

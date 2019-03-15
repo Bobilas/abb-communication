@@ -34,9 +34,9 @@ namespace ABB_Comunication
                     using (var mastership = Mastership.Request(_controller.Rapid))
                     {
                         _controller.Rapid.Stop();
-                        var pos = new ProgramPosition("naujas", "naujas_main", new TextRange(14));
+                        var pos = new ProgramPosition("MainModule", "main", new TextRange(23));
                         task?.SetProgramPointer(pos);
-                        _controller.Rapid.Start(true);
+                        _controller.Rapid.Start(RegainMode.Continue, ExecutionMode.Continuous);
                     }
 
                     Logger.InvokeLog("Started RAPID program");

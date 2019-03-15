@@ -376,11 +376,6 @@
             // 
             this.NumericBox_CircleRadius.CueText = null;
             this.NumericBox_CircleRadius.Location = new System.Drawing.Point(52, 21);
-            this.NumericBox_CircleRadius.Maximum = new decimal(new int[] {
-            60,
-            0,
-            0,
-            0});
             this.NumericBox_CircleRadius.Name = "NumericBox_CircleRadius";
             this.NumericBox_CircleRadius.Size = new System.Drawing.Size(91, 20);
             this.NumericBox_CircleRadius.TabIndex = 13;

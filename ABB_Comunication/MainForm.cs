@@ -159,8 +159,8 @@ namespace ABB_Comunication
         private void Button_StopRapid_Click(object sender, EventArgs e) => _controlUnit?.TryStopRapidProgram();
 
         private void Button_Move_Click(object sender, EventArgs e) => _controlUnit?.TryMove(NumericBox_X.Value, NumericBox_Y.Value, NumericBox_Z.Value);
-        private void Button_Square_Click(object sender, EventArgs e) => _controlUnit.TrySquare(NumericBox_SquareSide.Value);
-        private void Button_Circle_Click(object sender, EventArgs e) => _controlUnit.TryCircle(NumericBox_CircleRadius.Value);
+        private void Button_Square_Click(object sender, EventArgs e) => _controlUnit?.TrySquare(NumericBox_SquareSide.Value);
+        private void Button_Circle_Click(object sender, EventArgs e) => _controlUnit?.TryCircle(NumericBox_CircleRadius.Value);
 
         private void NumericBox_SquareSide_ValueChanged(object sender, EventArgs e) => UpdateSquareButton();
         private void NumericBox_X_ValueChanged(object sender, EventArgs e) => UpdateMoveButton();

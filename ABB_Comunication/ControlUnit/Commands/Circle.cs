@@ -14,9 +14,10 @@ namespace ABB_Comunication
             }
 
             Logger.InvokeLog($"Drawing circle. Radius: {radius}");
-            for (int i = 0; i < 20; i++)
+            int count = 20;
+            for (int i = 0; i < count; i++)
             {
-                double angle = 2 * Math.PI * i / 20;
+                double angle = 2 * Math.PI * i / count;
                 if (!TryMove(Math.Sin(angle) * radius, Math.Cos(angle) * radius, 0, false))
                 {
                     return false;

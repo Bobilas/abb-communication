@@ -11,8 +11,8 @@ namespace ABB_Comunication
         public bool TrySquare(double sideLength)
         {
             var task = _controller.Rapid.GetTask(RapidNames.TaskName);
-            var side = task.GetRapidData(RapidNames.ModuleName, RapidNames.VariableNames.SideLength);
-            var flag = task.GetRapidData(RapidNames.ModuleName, RapidNames.VariableNames.SquareFlag);
+            var side = task.GetRapidData(RapidNames.ModuleName, RapidNames.Variables.SideLength);
+            var flag = task.GetRapidData(RapidNames.ModuleName, RapidNames.Variables.SquareFlag);
 
             var sideNum = (Num)side.Value;
             var fBool = (Bool)flag.Value;

@@ -7,11 +7,11 @@ namespace ABB_Comunication
 {
     public partial class ControlUnit
     {
-        private class RapidNames
+        private struct RapidNames
         {
             public const string ModuleName = "naujas";
             public const string TaskName = "T_ROB1";
-            public class VariableNames
+            public struct Variables
             {
                 public const string
                     X = "X1",

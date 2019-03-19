@@ -28,7 +28,7 @@ namespace ABB_Comunication
                 Y,
                 Z;
 
-            public bool IsValid => 
+            public bool IsValid =>
                 !double.IsNaN(X)
                 && !double.IsNaN(Y)
                 && !double.IsNaN(Z);
@@ -48,11 +48,11 @@ namespace ABB_Comunication
             var task = _controller.Rapid.GetTask(RapidNames.TaskName);
             var positionData = new PositionData()
             {
-                X = task.GetRapidData(RapidNames.ModuleName, RapidNames.VariableNames.X),
-                Y = task.GetRapidData(RapidNames.ModuleName, RapidNames.VariableNames.Y),
-                Z = task.GetRapidData(RapidNames.ModuleName, RapidNames.VariableNames.Z),
+                X = task.GetRapidData(RapidNames.ModuleName, RapidNames.Variables.X),
+                Y = task.GetRapidData(RapidNames.ModuleName, RapidNames.Variables.Y),
+                Z = task.GetRapidData(RapidNames.ModuleName, RapidNames.Variables.Z),
             };
-            var executeFlag = task.GetRapidData(RapidNames.ModuleName, RapidNames.VariableNames.MoveFlag);
+            var executeFlag = task.GetRapidData(RapidNames.ModuleName, RapidNames.Variables.MoveFlag);
 
             var xNum = (Num)positionData.X.Value;
             var yNum = (Num)positionData.Y.Value;

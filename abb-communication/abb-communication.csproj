@@ -27,7 +27,7 @@
     <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>bin\</OutputPath>
+    <OutputPath>..\bin\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -37,9 +37,12 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\dlls\ABB.Robotics.Controllers.PC.dll</HintPath>
     </Reference>
-    <Reference Include="Forms, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Po.Forms, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\dlls\Forms.dll</HintPath>
+      <HintPath>..\..\_po\bin\Po.Forms.dll</HintPath>
+    </Reference>
+    <Reference Include="Po.Utilities">
+      <HintPath>..\..\_po\bin\Po.Utilities.dll</HintPath>
     </Reference>
     <Reference Include="RobotStudio.Services.RobApi, Version=6.2.6806.1029, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -60,31 +63,32 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
-    <Reference Include="Utilities, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\dlls\Utilities.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ControlUnit\Commands\OffsetMove.cs" />
     <Compile Include="ControlUnit\Commands\TimeOut.cs" />
     <Compile Include="ControlUnit\Commands\DrawPlane.cs" />
     <Compile Include="ControlUnit\Commands\Circle.cs" />
-    <Compile Include="ControlUnit\Commands\HomePosition.cs" />
     <Compile Include="ControlUnit\Commands\Move.cs" />
     <Compile Include="ControlUnit\Connection.cs" />
     <Compile Include="ControlUnit\RapidConfig.cs" />
     <Compile Include="ControlUnit\ControlUnit.cs" />
     <Compile Include="Helper.cs" />
-    <Compile Include="MainForm.cs">
+    <Compile Include="MainForm\ControlUnit.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MainForm.Designer.cs">
+    <Compile Include="MainForm\NetworkWatcher.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm\MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="MainForm.resx">
+    <EmbeddedResource Include="MainForm\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">

@@ -1,9 +1,10 @@
 ﻿using ABB.Robotics.Controllers;
 using ABB.Robotics.Controllers.RapidDomain;
-using Forms.Logging;
+using static ABB_Comunication.MainForm;
+
 using System;
 
-namespace ABB_Comunication
+namespace ABB_Comunication.Control
 {
     public partial class ControlUnit
     {

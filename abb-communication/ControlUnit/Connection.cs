@@ -1,9 +1,9 @@
 ﻿using System;
 using ABB.Robotics.Controllers;
 using ABB.Robotics.Controllers.RapidDomain;
-using Forms.Logging;
+using static ABB_Comunication.MainForm;
 
-namespace ABB_Comunication
+namespace ABB_Comunication.Control
 {
     public partial class ControlUnit
     {
@@ -54,6 +54,7 @@ namespace ABB_Comunication
                 if (_controller.OperatingMode == ControllerOperatingMode.Auto)
                 {
                     using (var mastership = Mastership.Request(_controller.Rapid)) { }
+                    TryStopRapidProgram(false);
                 }
                 else
                 {
@@ -72,10 +73,6 @@ namespace ABB_Comunication
                 Disconnect();
             }
 
-            if (IsConnected)
-            {
-                Connected?.Invoke(this, null);
-            }
             return IsConnected;
         }
 
@@ -95,7 +92,6 @@ namespace ABB_Comunication
                 }
             }
 
-            Disconnected?.Invoke(this, null);
             if (appendLog)
             {
                 Logger.InvokeLog($"Disconnected from controller {ControllerInfo.ControllerName}.");

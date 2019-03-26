@@ -1,35 +1,36 @@
 ﻿using System;
+using System.Threading;
 using Forms.Logging;
 
 namespace ABB_Comunication
 {
     public partial class ControlUnit
     {
-        public enum CirclePlane
-        {
-            XY,
-            YZ,
-            XZ
-        }
-        public bool TryCircle(CirclePlane plane, decimal radius) => TryCircle(plane, (double)radius);
-        public bool TryCircle(CirclePlane plane, double radius)
+        public bool TryCircle(DrawPlane plane, decimal radius) => TryCircle(plane, (double)radius);
+        public bool TryCircle(DrawPlane plane, double radius)
         {
             switch (plane)
             {
-                case CirclePlane.XY:
-                    if (!TryMove(-radius, 0, 0, false))
+                case DrawPlane.XY:
+                    if (!TryOffsetMove(plane, 0, 0, 5.0, false)
+                        || !TryOffsetMove(plane, -radius, 0, 0, false) 
+                        || !TryOffsetMove(plane, 0, 0, -5.0, false))
                     {
                         return false;
                     }
                     break;
-                case CirclePlane.YZ:
-                    if (!TryMove(0, 0, -radius, false))
+                case DrawPlane.YZ:
+                    if (!TryOffsetMove(plane, -5.0, 0, 0, false) 
+                        || !TryOffsetMove(plane, 0, 0, -radius, false)
+                        || !TryOffsetMove(plane, 5.0, 0, 0, false))
                     {
                         return false;
                     }
                     break;
-                case CirclePlane.XZ:
-                    if (!TryMove(-radius, 0, 0, false))
+                case DrawPlane.XZ:
+                    if (!TryOffsetMove(plane, 0, -5.0, 0, false)
+                        || !TryOffsetMove(plane, -radius, 0, 0, false)
+                        || !TryOffsetMove(plane, 0, 5.0, 0, false))
                     {
                         return false;
                     }
@@ -48,20 +49,20 @@ namespace ABB_Comunication
 
                 switch (plane)
                 {
-                    case CirclePlane.XY:
-                        if (!TryMove(Math.Sin(angle) * step, Math.Cos(angle) * step, 0, false))
+                    case DrawPlane.XY:
+                        if (!TryOffsetMove(plane, Math.Sin(angle) * step, Math.Cos(angle) * step, 0, false))
                         {
                             return false;
                         }
                         break;
-                    case CirclePlane.YZ:
-                        if (!TryMove(0, Math.Cos(angle) * step, Math.Sin(angle) * step, false))
+                    case DrawPlane.YZ:
+                        if (!TryOffsetMove(plane, 0, Math.Cos(angle) * step, Math.Sin(angle) * step, false))
                         {
                             return false;
                         }
                         break;
-                    case CirclePlane.XZ:
-                        if (!TryMove(Math.Sin(angle) * step, 0, Math.Cos(angle) * step, false))
+                    case DrawPlane.XZ:
+                        if (!TryOffsetMove(plane, Math.Sin(angle) * step, 0, Math.Cos(angle) * step, false))
                         {
                             return false;
                         }
@@ -71,20 +72,26 @@ namespace ABB_Comunication
 
             switch (plane)
             {
-                case CirclePlane.XY:
-                    if (!TryMove(radius, 0, 0, false))
+                case DrawPlane.XY:
+                    if (!TryOffsetMove(plane, 0, 0, 5.0, false)
+                        || !TryOffsetMove(plane, radius, 0, 0, false)
+                        || !TryOffsetMove(plane, 0, 0, -5.0, false))
                     {
                         return false;
                     }
                     break;
-                case CirclePlane.YZ:
-                    if (!TryMove(0, 0, radius, false))
+                case DrawPlane.YZ:
+                    if (!TryOffsetMove(plane, -5.0, 0, 0, false)
+                        || !TryOffsetMove(plane, 0, 0, radius, false)
+                        || !TryOffsetMove(plane, 5.0, 0, 0, false))
                     {
                         return false;
                     }
                     break;
-                case CirclePlane.XZ:
-                    if (!TryMove(radius, 0, 0, false))
+                case DrawPlane.XZ:
+                    if (!TryOffsetMove(plane, 0, -5.0, 0, false)
+                        || !TryOffsetMove(plane, radius, 0, 0, false)
+                        || !TryOffsetMove(plane, 0, 5.0, 0, false))
                     {
                         return false;
                     }

@@ -9,11 +9,11 @@ namespace ABB_Comunication
 {
     public partial class ControlUnit
     {
-        public bool TryMove(DrawPlane plane, decimal x, decimal y, decimal z, bool doLog = true)
+        public bool TryOffsetMove(DrawPlane plane, decimal x, decimal y, decimal z, bool doLog = true)
         {
-            return TryMove(plane, (double)x, (double)y, (double)z, doLog);
+            return TryOffsetMove(plane, (double)x, (double)y, (double)z, doLog);
         }
-        public bool TryMove(DrawPlane plane, double x, double y, double z, bool doLog = true)
+        public bool TryOffsetMove(DrawPlane plane, double x, double y, double z, bool doLog = true)
         {
             var task = _controller.Rapid.GetTask(RapidNames.TaskName);
 
@@ -26,7 +26,7 @@ namespace ABB_Comunication
                     Logger.InvokeLog($"Operation has timed out.");
                     return false;
                 }
-                return TryMove(plane, x, y, z, doLog);
+                return TryOffsetMove(plane, x, y, z, doLog);
             }
             StopTimeout();
 
@@ -44,7 +44,7 @@ namespace ABB_Comunication
                         xData.Value = new Num(x);
                         yData.Value = new Num(y);
                         zData.Value = new Num(z);
-                        homeFlag.Value = new Bool(true);
+                        homeFlag.Value = new Bool(false);
                         executeFlag.Value = new Bool(true);
                     }
 

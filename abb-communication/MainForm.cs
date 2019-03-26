@@ -2,7 +2,9 @@
 using System.Windows.Forms;
 using ABB.Robotics.Controllers;
 using ABB.Robotics.Controllers.Discovery;
+using ABB.Robotics.Controllers.RapidDomain;
 using Forms.Logging;
+using static ABB_Comunication.ControlUnit;
 
 namespace ABB_Comunication
 {
@@ -15,10 +17,12 @@ namespace ABB_Comunication
 
         private EventHandler _connectedHandler;
         private EventHandler _disconnectedHandler;
+        private EventHandler<ExecutionStatusChangedEventArgs> _statusChangedHandler;
 
         public MainForm()
         {
             InitializeComponent();
+            Button_Rapid.Tag = false;
             Logger.LogBox = LogBox;
             Logger.Form = this;
             ReloadControllers();
@@ -74,6 +78,13 @@ namespace ABB_Comunication
                     Invoke((MethodInvoker)delegate
                     {
                         UpdateButtons();
+                    });
+                });
+                _statusChangedHandler = new EventHandler<ExecutionStatusChangedEventArgs>((o, e) =>
+                {
+                    Invoke((MethodInvoker)delegate
+                    {
+                        UpdateRapidButton(e.Status == ExecutionStatus.Running);
                     });
                 });
             }
@@ -139,8 +150,9 @@ namespace ABB_Comunication
                 {
                     _controlUnit?.Dispose();
                     var controllerInfo = (ControllerInfo)DataGrid_Controllers.SelectedRows[0].Tag;
-                    _controlUnit = new ControlUnit(controllerInfo, _connectedHandler, _disconnectedHandler);
+                    _controlUnit = new ControlUnit(controllerInfo, _connectedHandler, _disconnectedHandler, _statusChangedHandler);
                     _controlUnit.TryConnect();
+                    _controlUnit.TryStopRapidProgram(false);
                 }
                 catch (Exception ex)
                 {
@@ -155,43 +167,63 @@ namespace ABB_Comunication
 
         private void Button_Scan_Click(object sender, EventArgs e) => ReloadControllers();
 
-        private void Button_StartRapid_Click(object sender, EventArgs e) => _controlUnit?.TryStartRapidProgram();
-        private void Button_StopRapid_Click(object sender, EventArgs e) => _controlUnit?.TryStopRapidProgram();
-
-        private void Button_Move_Click(object sender, EventArgs e) => _controlUnit?.TryMove(NumericBox_X.Value, NumericBox_Y.Value, NumericBox_Z.Value);
-        private void Button_Square_Click(object sender, EventArgs e) => _controlUnit?.TrySquare(NumericBox_SquareSide.Value);
-        private void Button_Circle_Click(object sender, EventArgs e)
+        private void Button_Rapid_Click(object sender, EventArgs e)
         {
-            _controlUnit?.TryCircle(
-                RadioButton_XY.Checked
-                    ? ControlUnit.CirclePlane.XY
-                    : RadioButton_XZ.Checked
-                        ? ControlUnit.CirclePlane.XZ
-                        : ControlUnit.CirclePlane.YZ,
-                NumericBox_CircleRadius.Value);
+            if ((bool)Button_Rapid.Tag)
+            {
+                _controlUnit?.TryStopRapidProgram();
+            }
+            else
+            {
+                _controlUnit?.TryStartRapidProgram();
+            }
+        }
+        private void UpdateRapidButton(bool isRunning)
+        {
+            Button_Rapid.Tag = isRunning;
+
+            if (isRunning)
+            {
+                Button_Rapid.Text = "Stop RAPID";
+            }
+            else
+            {
+                Button_Rapid.Text = "Start RAPID";
+            }
         }
 
-        private void NumericBox_SquareSide_ValueChanged(object sender, EventArgs e) => UpdateSquareButton();
-        private void NumericBox_X_ValueChanged(object sender, EventArgs e) => UpdateMoveButton();
-        private void NumericBox_Y_ValueChanged(object sender, EventArgs e) => UpdateMoveButton();
-        private void NumericBox_Z_ValueChanged(object sender, EventArgs e) => UpdateMoveButton();
-        private void NumericBox_CircleRadius_ValueChanged(object sender, EventArgs e) => UpdateCircleButton();
+        private void Button_MoveByOffset_Click(object sender, EventArgs e)
+        {
+            _controlUnit?.TryOffsetMove(GetDrawPlane(), NumericBox_OffsetX.Value, NumericBox_OffsetY.Value, NumericBox_OffsetZ.Value);
+        }
+        private void Button_MoveToPosition_Click(object sender, EventArgs e)
+        {
+            _controlUnit?.TryMove(GetDrawPlane(), NumericBox_PositionX.Value, NumericBox_PositionY.Value, NumericBox_PositionZ.Value);
+        }
+        private void Button_Circle_Click(object sender, EventArgs e)
+        {
+            _controlUnit?.TryCircle(GetDrawPlane(), NumericBox_CircleRadius.Value);
+        }
+
+        private DrawPlane GetDrawPlane()
+        {
+            return RadioButton_XY.Checked
+                ? DrawPlane.XY
+                : RadioButton_XZ.Checked
+                    ? DrawPlane.XZ
+                    : DrawPlane.YZ;
+        }
+
+        private void Button_Home_Click(object sender, EventArgs e) => _controlUnit?.TryHome();
 
         private void UpdateButtons()
         {
             Button_Connection.Text =
                 (_controlUnit?.IsConnected ?? false)
                 ? "Disconnect" : "Connect";
-            Button_StartRapid.Enabled = _controlUnit?.IsConnected ?? false;
-            Button_StopRapid.Enabled = _controlUnit?.IsConnected ?? false;
+            Button_Rapid.Enabled = _controlUnit?.IsConnected ?? false;
             Button_Scan.Enabled = !(_controlUnit?.IsConnected ?? false);
-            UpdateMoveButton();
-            UpdateSquareButton();
-            UpdateCircleButton();
         }
-        private void UpdateMoveButton() => Button_Move.Enabled = _controlUnit?.IsConnected ?? false;
-        private void UpdateSquareButton() => Button_Square.Enabled = _controlUnit?.IsConnected ?? false;
-        private void UpdateCircleButton() => Button_Circle.Enabled = _controlUnit?.IsConnected ?? false;
 
         private bool _isFormClosing = false;
         private void Form1_FormClosing(object sender, FormClosingEventArgs e) => _isFormClosing = true;

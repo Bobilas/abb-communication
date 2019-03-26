@@ -66,12 +66,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ControlUnit\Commands\OffsetMove.cs" />
+    <Compile Include="ControlUnit\Commands\TimeOut.cs" />
+    <Compile Include="ControlUnit\Commands\DrawPlane.cs" />
     <Compile Include="ControlUnit\Commands\Circle.cs" />
+    <Compile Include="ControlUnit\Commands\HomePosition.cs" />
     <Compile Include="ControlUnit\Commands\Move.cs" />
     <Compile Include="ControlUnit\Connection.cs" />
-    <Compile Include="ControlUnit\Commands\Square.cs" />
     <Compile Include="ControlUnit\RapidConfig.cs" />
     <Compile Include="ControlUnit\ControlUnit.cs" />
+    <Compile Include="Helper.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>

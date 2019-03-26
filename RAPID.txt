@@ -1,0 +1,59 @@
+MODULE MoveModule
+    PERS tooldata defaultToolData := [TRUE, [[2.6,46.6,43], [0.5,-0.5,0.5,0.5]], [0.4,[0,0,50],[1,0,0,0],0,0,0]];
+    CONST robtarget homePosition := [[305,52,237], [0.511058,-0.48005,-0.511965,-0.49625], [0,0,-1,0], [9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    
+    VAR num xOffset := 0;
+    VAR num yOffset := 0;
+    VAR num zOffset := 0;
+    
+    VAR num xCoord := 0;
+    VAR num yCoord := 0;
+    VAR num zCoord := 0;
+    
+    VAR bool executeFlag := FALSE;
+    VAR bool homeFlag := TRUE;
+    
+    VAR robtarget currentPosition;
+    
+    PROC MoveModule_main()
+        ResetMoveModule;
+        MoveFromHome;
+        UpdatePosition;
+        WHILE TRUE DO
+            IF executeFlag THEN 
+                UpdatePosition;
+                IF homeFlag THEN
+                    MoveFromHome;
+                ELSE
+                    MoveFromHere;
+                ENDIF
+                UpdatePosition;
+                executeFlag := FALSE;
+            ENDIF
+        ENDWHILE
+    ENDPROC
+    
+    PROC ResetMoveModule()
+        ConfL\Off;
+        ConfJ\Off;
+        xOffset := 0;
+        yOffset := 0;
+        zOffset := 0;
+        executeFlag := FALSE;
+    ENDPROC
+    
+    PROC UpdatePosition()
+        currentPosition := CRobT(\Tool:=defaultToolData);
+        xCoord := Round((currentPosition.trans.x - 305)\Dec:=1);
+        yCoord := Round((currentPosition.trans.y - 52)\Dec:=1);
+        zCoord := Round((currentPosition.trans.z - 237)\Dec:=1);
+    ENDPROC
+    
+    PROC MoveFromHere()
+        MoveL Offs(currentPosition, xOffset, yOffset, zOffset), v50, fine, defaultToolData;
+    ENDPROC
+    
+    PROC MoveFromHome()
+        MoveL Offs(homePosition, xOffset, yOffset, zOffset), v50, fine, defaultToolData;
+    ENDPROC
+ENDMODULE

@@ -1,8 +1,7 @@
 ﻿using System;
-using System.Threading;
-using Forms.Logging;
+using static ABB_Comunication.MainForm;
 
-namespace ABB_Comunication
+namespace ABB_Comunication.Control
 {
     public partial class ControlUnit
     {

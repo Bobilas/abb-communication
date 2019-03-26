@@ -1,11 +1,10 @@
 ﻿using System;
-using System.Threading;
 using ABB.Robotics.Controllers;
 using ABB.Robotics.Controllers.RapidDomain;
-using Forms.Logging;
-using Utilities;
+using static ABB_Comunication.MainForm;
+using Po.Utilities;
 
-namespace ABB_Comunication
+namespace ABB_Comunication.Control
 {
     public partial class ControlUnit
     {

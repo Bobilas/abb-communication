@@ -7,19 +7,22 @@ namespace ABB_Comunication
 {
     public partial class ControlUnit
     {
-        private class RapidNames
+        private struct RapidNames
         {
-            public const string ModuleName = "naujas";
+            public const string ModuleName = "MoveModule";
+            public const string ProcName = "MoveModule_main";
             public const string TaskName = "T_ROB1";
-            public class VariableNames
+            public struct Variables
             {
                 public const string
-                    X = "X1",
-                    Y = "Y1",
-                    Z = "Z1",
-                    SideLength = "size",
-                    MoveFlag = "flagas2",
-                    SquareFlag = "flagas";
+                    XCoord = "xCoord",
+                    YCoord = "yCoord",
+                    ZCoord = "zCoord",
+                    XOffset = "xOffset",
+                    YOffset = "yOffset",
+                    ZOffset = "zOffset",
+                    ExecuteFlag = "executeFlag",
+                    HomeFlag = "homeFlag";
             }
         }
 
@@ -27,15 +30,17 @@ namespace ABB_Comunication
         {
             try
             {
-                var task = _controller.Rapid.GetTask(RapidNames.TaskName);
-
                 if (_controller.OperatingMode == ControllerOperatingMode.Auto)
                 {
+                    var task = _controller.Rapid.GetTask(RapidNames.TaskName);
+                    if (task.ExecutionStatus == TaskExecutionStatus.Running)
+                    {
+                        Logger.InvokeLog("RAPID program is already running.");
+                        return true;
+                    }
                     using (var mastership = Mastership.Request(_controller.Rapid))
                     {
-                        _controller.Rapid.Stop();
-                        var pos = new ProgramPosition("MainModule", "main", new TextRange(23));
-                        task?.SetProgramPointer(pos);
+                        task?.SetProgramPointer(RapidNames.ModuleName, RapidNames.ProcName);
                         _controller.Rapid.Start(RegainMode.Continue, ExecutionMode.Continuous);
                     }
 
@@ -44,46 +49,59 @@ namespace ABB_Comunication
                 }
                 else
                 {
-                    Logger.InvokeLog("Failed to start rapid program: Setting the program pointer is not allowed in manual mode from a remote client.");
+                    Logger.InvokeLog("Cannot start RAPID program: Controller operating mode must be set to automatic.");
                 }
             }
             catch (InvalidOperationException)
             {
-                Logger.InvokeLog("Failed to start rapid program: Mastership is held by another client.");
+                Logger.InvokeLog("Failed to start RAPID program: Mastership is held by another client.");
             }
             catch (Exception ex)
             {
-                Logger.InvokeLog($"Failed to start rapid program: {ex.Message}");
+                Logger.InvokeLog($"Failed to start RAPID program: {ex.Message}");
             }
 
             return false;
         }
-        public bool TryStopRapidProgram()
+        public bool TryStopRapidProgram(bool doLog = true)
         {
             try
             {
                 if (_controller.OperatingMode == ControllerOperatingMode.Auto)
                 {
+                    var task = _controller.Rapid.GetTask(RapidNames.TaskName);
                     using (var mastership = Mastership.Request(_controller.Rapid))
                     {
-                        _controller.Rapid.Stop();
+                        _controller.Rapid.Stop(StopMode.Immediate);
                     }
 
-                    Logger.InvokeLog("Stopped RAPID program");
+                    if (doLog)
+                    {
+                        Logger.InvokeLog("Stopped RAPID program");
+                    }
                     return true;
                 }
                 else
                 {
-                    Logger.InvokeLog("Failed to stop rapid program: Automatic mode is required to start execution from a remote client.");
+                    if (doLog)
+                    {
+                        Logger.InvokeLog("Failed to stop RAPID program: Controller operating mode must be set to automatic.");
+                    }
                 }
             }
             catch (InvalidOperationException)
             {
-                Logger.InvokeLog("Failed to stop rapid program: Mastership is held by another client.");
+                if (doLog)
+                {
+                    Logger.InvokeLog("Failed to stop RAPID program: Mastership is held by another client.");
+                }
             }
             catch (Exception ex)
             {
-                Logger.InvokeLog("Failed to stop rapid program: " + ex.Message);
+                if (doLog)
+                {
+                    Logger.InvokeLog("Failed to stop RAPID program: " + ex.Message);
+                }
             }
 
             return false;

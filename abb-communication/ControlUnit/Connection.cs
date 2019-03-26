@@ -1,5 +1,6 @@
 ﻿using System;
 using ABB.Robotics.Controllers;
+using ABB.Robotics.Controllers.RapidDomain;
 using Forms.Logging;
 
 namespace ABB_Comunication
@@ -8,6 +9,7 @@ namespace ABB_Comunication
     {
         public event EventHandler Disconnected;
         public event EventHandler Connected;
+        public event EventHandler<ExecutionStatusChangedEventArgs> ExecutionStatusChanged;
 
         public bool IsConnected => _controller?.Connected ?? false;
 
@@ -28,6 +30,7 @@ namespace ABB_Comunication
                     _controller.Logon(UserInfo.DefaultUser);
                     if (IsConnected)
                     {
+                        _controller.Rapid.ExecutionStatusChanged += ExecutionStatusChanged;
                         Logger.InvokeLog($"Connected to controller.");
                     }
                     else

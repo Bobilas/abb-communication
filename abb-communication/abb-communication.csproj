@@ -39,10 +39,11 @@
     </Reference>
     <Reference Include="Po.Forms, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\_po\bin\Po.Forms.dll</HintPath>
+      <HintPath>..\dlls\Po.Forms.dll</HintPath>
     </Reference>
-    <Reference Include="Po.Utilities">
-      <HintPath>..\..\_po\bin\Po.Utilities.dll</HintPath>
+    <Reference Include="Po.Utilities, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\dlls\Po.Utilities.dll</HintPath>
     </Reference>
     <Reference Include="RobotStudio.Services.RobApi, Version=6.2.6806.1029, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>

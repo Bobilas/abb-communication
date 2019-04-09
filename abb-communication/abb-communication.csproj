@@ -66,11 +66,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ControlUnit\Commands\OffsetMove.cs" />
-    <Compile Include="ControlUnit\Commands\TimeOut.cs" />
-    <Compile Include="ControlUnit\Commands\DrawPlane.cs" />
+    <Compile Include="ControlUnit\Commands\Base\OffsetMove.cs" />
+    <Compile Include="ControlUnit\Commands\Base\TimeOut.cs" />
+    <Compile Include="ControlUnit\Commands\Base\DrawPlane.cs" />
     <Compile Include="ControlUnit\Commands\Circle.cs" />
-    <Compile Include="ControlUnit\Commands\Move.cs" />
+    <Compile Include="ControlUnit\Commands\Base\Move.cs" />
     <Compile Include="ControlUnit\Connection.cs" />
     <Compile Include="ControlUnit\RapidConfig.cs" />
     <Compile Include="ControlUnit\ControlUnit.cs" />

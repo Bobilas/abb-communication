@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Po.Utilities</name>
+    </assembly>
+    <members>
+        <member name="T:Po.Utilities.UtilityExtensions">
+            <summary>
+            Contains various helpful extension methods.
+            </summary>
+        </member>
+        <member name="M:Po.Utilities.UtilityExtensions.GetString(System.Double)">
+            <summary>
+            Returns double as string without the scientific notation.
+            </summary>
+        </member>
+        <member name="M:Po.Utilities.UtilityExtensions.ReadAllLines(System.IO.StreamReader,System.Boolean)">
+            <summary>
+            Reads and returns all new lines from the <see cref="T:System.IO.StreamReader"/> buffer.
+            </summary>
+            <param name="readFromBeginning">True resets the position within the current stream.</param>
+        </member>
+        <member name="M:Po.Utilities.UtilityExtensions.GetFixedString(System.Int32,System.Int32)">
+            <summary>
+            Returns a string of fixed length.
+            Adds leading whitespaces.
+            </summary>
+            <param name="fixedLength">Target length of string.</param>
+        </member>
+        <member name="M:Po.Utilities.UtilityExtensions.GetFixedString(System.Double,System.Int32,System.Int32)">
+            <summary>
+            Returns a string of fixed length.
+            Adds leading whitespaces and trailing zeroes.
+            </summary>
+            <param name="prePointLength">Target length of string before decimal point.</param>
+            <param name="postPointLength">Target number of digits after decimal point.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Po.Utilities.UtilityExtensions.GetDefault``1(System.Configuration.SettingsPropertyCollection,System.String)">
+            <summary>
+            Returns the default value of the given <see cref="T:System.Configuration.SettingsProperty"/> from <see cref="T:System.Configuration.SettingsPropertyCollection"/> by the property name.
+            </summary>
+        </member>
+        <member name="T:Po.Utilities.Helper">
+            <summary>
+            Contains various helpful methods.
+            </summary>
+        </member>
+        <member name="M:Po.Utilities.Helper.RunAsync(System.Action,System.Threading.ApartmentState)">
+            <summary>
+            Executes the given action asynchronously using <see cref="T:System.Threading.Thread"/> class.
+            </summary>
+            <param name="action">Action to execute.</param>
+            <param name="apartmentState"><see cref="T:System.Threading.Thread"/> instance's apartment state.</param>
+        </member>
+        <member name="M:Po.Utilities.Helper.IsDirectoryPathValid(System.String)">
+            <summary>
+            Returns whether the given directory path is valid.
+            </summary>
+        </member>
+        <member name="M:Po.Utilities.Helper.IsFileNameValid(System.String)">
+            <summary>
+            Returns whether the given file name is valid.
+            </summary>
+        </member>
+        <member name="M:Po.Utilities.Helper.IsFilePathValid(System.String)">
+            <summary>
+            Returns whether the given file path is valid.
+            </summary>
+        </member>
+    </members>
+</doc>

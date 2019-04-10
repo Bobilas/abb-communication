@@ -73,6 +73,7 @@ namespace ABB_Comunication.Control
                 Disconnect();
             }
 
+            Connected?.Invoke(this, null);
             return IsConnected;
         }
 
@@ -85,16 +86,17 @@ namespace ABB_Comunication.Control
                     _controller.Logoff();
                     _controller.Dispose();
                     _controller = null;
+                    Disconnected?.Invoke(this, null);
+
+                    if (appendLog)
+                    {
+                        Logger.InvokeLog($"Disconnected from controller {ControllerInfo.ControllerName}.");
+                    }
                 }
                 catch (Exception ex)
                 {
                     Logger.InvokeLog($"An exception occured when disconnecting from controller {ControllerInfo.ControllerName}: {ex.Message}");
                 }
-            }
-
-            if (appendLog)
-            {
-                Logger.InvokeLog($"Disconnected from controller {ControllerInfo.ControllerName}.");
             }
         }
     }

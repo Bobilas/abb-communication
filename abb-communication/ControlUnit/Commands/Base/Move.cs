@@ -50,7 +50,7 @@ namespace ABB_Comunication.Control
                     if (doLog)
                     {
                         Logger.InvokeLog(
-                            $"Moving by offset: " +
+                            $"Moving to position: " +
                             $"{x.GetFixedString(3, 2)}; " +
                             $"{y.GetFixedString(3, 2)}; " +
                             $"{z.GetFixedString(3, 2)}");

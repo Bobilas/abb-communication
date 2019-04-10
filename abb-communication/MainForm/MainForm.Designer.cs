@@ -86,7 +86,7 @@
             this.Button_Connection.Name = "Button_Connection";
             this.Button_Connection.Size = new System.Drawing.Size(75, 23);
             this.Button_Connection.TabIndex = 1;
-            this.Button_Connection.Tag = "";
+            this.Button_Connection.Tag = false;
             this.Button_Connection.Text = "Connect";
             this.Button_Connection.UseVisualStyleBackColor = true;
             this.Button_Connection.Click += new System.EventHandler(this.Button_Connection_Click);
@@ -108,7 +108,7 @@
             this.Button_Rapid.Name = "Button_Rapid";
             this.Button_Rapid.Size = new System.Drawing.Size(75, 23);
             this.Button_Rapid.TabIndex = 8;
-            this.Button_Rapid.Tag = "";
+            this.Button_Rapid.Tag = false;
             this.Button_Rapid.Text = "Start RAPID";
             this.Button_Rapid.UseVisualStyleBackColor = true;
             this.Button_Rapid.Click += new System.EventHandler(this.Button_Rapid_Click);

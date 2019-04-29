@@ -8,96 +8,112 @@ namespace ABB_Comunication.Control
         public bool TryCircle(DrawPlane plane, decimal radius) => TryCircle(plane, (double)radius);
         public bool TryCircle(DrawPlane plane, double radius)
         {
-            switch (plane)
-            {
-                case DrawPlane.XY:
-                    if (!TryOffsetMove(plane, 0, 0, 5.0, false)
-                        || !TryOffsetMove(plane, -radius, 0, 0, false) 
-                        || !TryOffsetMove(plane, 0, 0, -5.0, false))
-                    {
-                        return false;
-                    }
-                    break;
-                case DrawPlane.YZ:
-                    if (!TryOffsetMove(plane, -5.0, 0, 0, false) 
-                        || !TryOffsetMove(plane, 0, 0, -radius, false)
-                        || !TryOffsetMove(plane, 5.0, 0, 0, false))
-                    {
-                        return false;
-                    }
-                    break;
-                case DrawPlane.XZ:
-                    if (!TryOffsetMove(plane, 0, -5.0, 0, false)
-                        || !TryOffsetMove(plane, -radius, 0, 0, false)
-                        || !TryOffsetMove(plane, 0, 5.0, 0, false))
-                    {
-                        return false;
-                    }
-                    break;
-            }
-
             Logger.InvokeLog($"Drawing circle. Radius: {radius}");
 
-            int count = 64;
-            double length = radius * 2 * Math.PI;
-            double step = length / count;
+            int stepCount = 64;
+            double circleLength = radius * 2 * Math.PI;
+            double stepLength = circleLength / stepCount;
 
-            for (int i = 0; i < count; i++)
+            return
+                stepOut()
+                && drawCircle()
+                && stepIn();
+
+            bool stepOut()
             {
-                double angle = 2 * Math.PI * i / count;
-
                 switch (plane)
                 {
                     case DrawPlane.XY:
-                        if (!TryOffsetMove(plane, Math.Sin(angle) * step, Math.Cos(angle) * step, 0, false))
+                        if (!TryOffsetMove(plane, 0, 0, 5.0, false)
+                            || !TryOffsetMove(plane, -radius, 0, 0, false)
+                            || !TryOffsetMove(plane, 0, 0, -5.0, false))
                         {
                             return false;
                         }
                         break;
                     case DrawPlane.YZ:
-                        if (!TryOffsetMove(plane, 0, Math.Cos(angle) * step, Math.Sin(angle) * step, false))
+                        if (!TryOffsetMove(plane, -5.0, 0, 0, false)
+                            || !TryOffsetMove(plane, 0, 0, -radius, false)
+                            || !TryOffsetMove(plane, 5.0, 0, 0, false))
                         {
                             return false;
                         }
                         break;
                     case DrawPlane.XZ:
-                        if (!TryOffsetMove(plane, Math.Sin(angle) * step, 0, Math.Cos(angle) * step, false))
+                        if (!TryOffsetMove(plane, 0, -5.0, 0, false)
+                            || !TryOffsetMove(plane, -radius, 0, 0, false)
+                            || !TryOffsetMove(plane, 0, 5.0, 0, false))
                         {
                             return false;
                         }
                         break;
                 }
-            }
 
-            switch (plane)
+                return true;
+            }
+            bool stepIn()
             {
-                case DrawPlane.XY:
-                    if (!TryOffsetMove(plane, 0, 0, 5.0, false)
-                        || !TryOffsetMove(plane, radius, 0, 0, false)
-                        || !TryOffsetMove(plane, 0, 0, -5.0, false))
-                    {
-                        return false;
-                    }
-                    break;
-                case DrawPlane.YZ:
-                    if (!TryOffsetMove(plane, -5.0, 0, 0, false)
-                        || !TryOffsetMove(plane, 0, 0, radius, false)
-                        || !TryOffsetMove(plane, 5.0, 0, 0, false))
-                    {
-                        return false;
-                    }
-                    break;
-                case DrawPlane.XZ:
-                    if (!TryOffsetMove(plane, 0, -5.0, 0, false)
-                        || !TryOffsetMove(plane, radius, 0, 0, false)
-                        || !TryOffsetMove(plane, 0, 5.0, 0, false))
-                    {
-                        return false;
-                    }
-                    break;
-            }
+                switch (plane)
+                {
+                    case DrawPlane.XY:
+                        if (!TryOffsetMove(plane, 0, 0, 5.0, false)
+                            || !TryOffsetMove(plane, radius, 0, 0, false)
+                            || !TryOffsetMove(plane, 0, 0, -5.0, false))
+                        {
+                            return false;
+                        }
+                        break;
+                    case DrawPlane.YZ:
+                        if (!TryOffsetMove(plane, -5.0, 0, 0, false)
+                            || !TryOffsetMove(plane, 0, 0, radius, false)
+                            || !TryOffsetMove(plane, 5.0, 0, 0, false))
+                        {
+                            return false;
+                        }
+                        break;
+                    case DrawPlane.XZ:
+                        if (!TryOffsetMove(plane, 0, -5.0, 0, false)
+                            || !TryOffsetMove(plane, radius, 0, 0, false)
+                            || !TryOffsetMove(plane, 0, 5.0, 0, false))
+                        {
+                            return false;
+                        }
+                        break;
+                }
 
-            return true;
+                return true;
+            }
+            bool drawCircle()
+            {
+                for (int i = 0; i < stepCount; i++)
+                {
+                    double angle = 2 * Math.PI * i / stepCount;
+
+                    switch (plane)
+                    {
+                        case DrawPlane.XY:
+                            if (!TryOffsetMove(plane, Math.Sin(angle) * stepLength, Math.Cos(angle) * stepLength, 0, false))
+                            {
+                                return false;
+                            }
+                            break;
+                        case DrawPlane.YZ:
+                            if (!TryOffsetMove(plane, 0, Math.Cos(angle) * stepLength, Math.Sin(angle) * stepLength, false))
+                            {
+                                return false;
+                            }
+                            break;
+                        case DrawPlane.XZ:
+                            if (!TryOffsetMove(plane, Math.Sin(angle) * stepLength, 0, Math.Cos(angle) * stepLength, false))
+                            {
+                                return false;
+                            }
+                            break;
+                    }
+                }
+
+                return true;
+            }
         }
     }
 }

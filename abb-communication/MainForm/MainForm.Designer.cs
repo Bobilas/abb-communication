@@ -37,6 +37,9 @@
             this.Button_Scan = new System.Windows.Forms.Button();
             this.TextBox_Log = new System.Windows.Forms.TextBox();
             this.GroupBox_MoveByOffset = new System.Windows.Forms.GroupBox();
+            this.NumericBox_OffsetZ = new Po.Forms.NumericBox();
+            this.NumericBox_OffsetY = new Po.Forms.NumericBox();
+            this.NumericBox_OffsetX = new Po.Forms.NumericBox();
             this.DataGrid_Controllers = new System.Windows.Forms.DataGridView();
             this.Column_IP = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -45,6 +48,7 @@
             this.Column_Version = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column_ControllerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GroupBox_Circle = new System.Windows.Forms.GroupBox();
+            this.NumericBox_CircleRadius = new Po.Forms.NumericBox();
             this.Label_CircleRadius = new System.Windows.Forms.Label();
             this.Button_Circle = new System.Windows.Forms.Button();
             this.RadioButton_XZ = new System.Windows.Forms.RadioButton();
@@ -60,23 +64,19 @@
             this.NumericBox_PositionZ = new Po.Forms.NumericBox();
             this.NumericBox_PositionX = new Po.Forms.NumericBox();
             this.NumericBox_PositionY = new Po.Forms.NumericBox();
-            this.NumericBox_CircleRadius = new Po.Forms.NumericBox();
-            this.NumericBox_OffsetZ = new Po.Forms.NumericBox();
-            this.NumericBox_OffsetY = new Po.Forms.NumericBox();
-            this.NumericBox_OffsetX = new Po.Forms.NumericBox();
             this.GroupBox_MoveByOffset.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.NumericBox_OffsetZ)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NumericBox_OffsetY)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NumericBox_OffsetX)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DataGrid_Controllers)).BeginInit();
             this.GroupBox_Circle.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.NumericBox_CircleRadius)).BeginInit();
             this.GroupBox_DrawPlane.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.GroupBox_Move.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NumericBox_PositionZ)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NumericBox_PositionX)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NumericBox_PositionY)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.NumericBox_CircleRadius)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.NumericBox_OffsetZ)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.NumericBox_OffsetY)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.NumericBox_OffsetX)).BeginInit();
             this.SuspendLayout();
             // 
             // Button_Connection
@@ -86,7 +86,7 @@
             this.Button_Connection.Name = "Button_Connection";
             this.Button_Connection.Size = new System.Drawing.Size(75, 23);
             this.Button_Connection.TabIndex = 1;
-            this.Button_Connection.Tag = "";
+            this.Button_Connection.Tag = false;
             this.Button_Connection.Text = "Connect";
             this.Button_Connection.UseVisualStyleBackColor = true;
             this.Button_Connection.Click += new System.EventHandler(this.Button_Connection_Click);
@@ -108,7 +108,7 @@
             this.Button_Rapid.Name = "Button_Rapid";
             this.Button_Rapid.Size = new System.Drawing.Size(75, 23);
             this.Button_Rapid.TabIndex = 8;
-            this.Button_Rapid.Tag = "";
+            this.Button_Rapid.Tag = false;
             this.Button_Rapid.Text = "Start RAPID";
             this.Button_Rapid.UseVisualStyleBackColor = true;
             this.Button_Rapid.Click += new System.EventHandler(this.Button_Rapid_Click);
@@ -152,6 +152,7 @@
             // 
             // TextBox_Log
             // 
+            this.TextBox_Log.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TextBox_Log.Location = new System.Drawing.Point(12, 138);
             this.TextBox_Log.Multiline = true;
             this.TextBox_Log.Name = "TextBox_Log";
@@ -174,6 +175,45 @@
             this.GroupBox_MoveByOffset.TabIndex = 18;
             this.GroupBox_MoveByOffset.TabStop = false;
             this.GroupBox_MoveByOffset.Text = "Move by offset";
+            // 
+            // NumericBox_OffsetZ
+            // 
+            this.NumericBox_OffsetZ.CueText = null;
+            this.NumericBox_OffsetZ.Location = new System.Drawing.Point(26, 73);
+            this.NumericBox_OffsetZ.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            -2147483648});
+            this.NumericBox_OffsetZ.Name = "NumericBox_OffsetZ";
+            this.NumericBox_OffsetZ.Size = new System.Drawing.Size(107, 20);
+            this.NumericBox_OffsetZ.TabIndex = 18;
+            // 
+            // NumericBox_OffsetY
+            // 
+            this.NumericBox_OffsetY.CueText = null;
+            this.NumericBox_OffsetY.Location = new System.Drawing.Point(26, 47);
+            this.NumericBox_OffsetY.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            -2147483648});
+            this.NumericBox_OffsetY.Name = "NumericBox_OffsetY";
+            this.NumericBox_OffsetY.Size = new System.Drawing.Size(107, 20);
+            this.NumericBox_OffsetY.TabIndex = 17;
+            // 
+            // NumericBox_OffsetX
+            // 
+            this.NumericBox_OffsetX.CueText = null;
+            this.NumericBox_OffsetX.Location = new System.Drawing.Point(26, 21);
+            this.NumericBox_OffsetX.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            -2147483648});
+            this.NumericBox_OffsetX.Name = "NumericBox_OffsetX";
+            this.NumericBox_OffsetX.Size = new System.Drawing.Size(107, 20);
+            this.NumericBox_OffsetX.TabIndex = 16;
             // 
             // DataGrid_Controllers
             // 
@@ -247,6 +287,14 @@
             this.GroupBox_Circle.TabIndex = 20;
             this.GroupBox_Circle.TabStop = false;
             this.GroupBox_Circle.Text = "Circle";
+            // 
+            // NumericBox_CircleRadius
+            // 
+            this.NumericBox_CircleRadius.CueText = null;
+            this.NumericBox_CircleRadius.Location = new System.Drawing.Point(52, 21);
+            this.NumericBox_CircleRadius.Name = "NumericBox_CircleRadius";
+            this.NumericBox_CircleRadius.Size = new System.Drawing.Size(91, 20);
+            this.NumericBox_CircleRadius.TabIndex = 13;
             // 
             // Label_CircleRadius
             // 
@@ -432,53 +480,6 @@
             this.NumericBox_PositionY.Size = new System.Drawing.Size(109, 20);
             this.NumericBox_PositionY.TabIndex = 17;
             // 
-            // NumericBox_CircleRadius
-            // 
-            this.NumericBox_CircleRadius.CueText = null;
-            this.NumericBox_CircleRadius.Location = new System.Drawing.Point(52, 21);
-            this.NumericBox_CircleRadius.Name = "NumericBox_CircleRadius";
-            this.NumericBox_CircleRadius.Size = new System.Drawing.Size(91, 20);
-            this.NumericBox_CircleRadius.TabIndex = 13;
-            // 
-            // NumericBox_OffsetZ
-            // 
-            this.NumericBox_OffsetZ.CueText = null;
-            this.NumericBox_OffsetZ.Location = new System.Drawing.Point(26, 73);
-            this.NumericBox_OffsetZ.Minimum = new decimal(new int[] {
-            100,
-            0,
-            0,
-            -2147483648});
-            this.NumericBox_OffsetZ.Name = "NumericBox_OffsetZ";
-            this.NumericBox_OffsetZ.Size = new System.Drawing.Size(107, 20);
-            this.NumericBox_OffsetZ.TabIndex = 18;
-            // 
-            // NumericBox_OffsetY
-            // 
-            this.NumericBox_OffsetY.CueText = null;
-            this.NumericBox_OffsetY.Location = new System.Drawing.Point(26, 47);
-            this.NumericBox_OffsetY.Minimum = new decimal(new int[] {
-            100,
-            0,
-            0,
-            -2147483648});
-            this.NumericBox_OffsetY.Name = "NumericBox_OffsetY";
-            this.NumericBox_OffsetY.Size = new System.Drawing.Size(107, 20);
-            this.NumericBox_OffsetY.TabIndex = 17;
-            // 
-            // NumericBox_OffsetX
-            // 
-            this.NumericBox_OffsetX.CueText = null;
-            this.NumericBox_OffsetX.Location = new System.Drawing.Point(26, 21);
-            this.NumericBox_OffsetX.Minimum = new decimal(new int[] {
-            100,
-            0,
-            0,
-            -2147483648});
-            this.NumericBox_OffsetX.Name = "NumericBox_OffsetX";
-            this.NumericBox_OffsetX.Size = new System.Drawing.Size(107, 20);
-            this.NumericBox_OffsetX.TabIndex = 16;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -499,9 +500,13 @@
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.GroupBox_MoveByOffset.ResumeLayout(false);
             this.GroupBox_MoveByOffset.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.NumericBox_OffsetZ)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NumericBox_OffsetY)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NumericBox_OffsetX)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DataGrid_Controllers)).EndInit();
             this.GroupBox_Circle.ResumeLayout(false);
             this.GroupBox_Circle.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.NumericBox_CircleRadius)).EndInit();
             this.GroupBox_DrawPlane.ResumeLayout(false);
             this.flowLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel1.PerformLayout();
@@ -510,10 +515,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.NumericBox_PositionZ)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NumericBox_PositionX)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NumericBox_PositionY)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.NumericBox_CircleRadius)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.NumericBox_OffsetZ)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.NumericBox_OffsetY)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.NumericBox_OffsetX)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

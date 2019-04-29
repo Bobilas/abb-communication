@@ -45,8 +45,14 @@ namespace ABB_Comunication.Control
                         _controller.Rapid.Start(RegainMode.Continue, ExecutionMode.Continuous);
                     }
 
-                    Logger.InvokeLog("Started RAPID program");
-                    return true;
+                    task = _controller.Rapid.GetTask(RapidNames.TaskName);
+                    if (task.ExecutionStatus == TaskExecutionStatus.Running)
+                    {
+                        Logger.InvokeLog("Started RAPID program");
+                        return true;
+                    }
+
+                    Logger.InvokeLog("Failed to start RAPID program. Possible cause: motors are off.");
                 }
                 else
                 {

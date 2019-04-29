@@ -31,7 +31,7 @@ namespace ABB_Comunication.Control
                     if (IsConnected)
                     {
                         _controller.Rapid.ExecutionStatusChanged += ExecutionStatusChanged;
-                        Logger.InvokeLog($"Connected to controller.");
+                        Logger.InvokeLog($"Connected to controller @{ControllerInfo.IPAddress}");
                     }
                     else
                     {
@@ -73,6 +73,7 @@ namespace ABB_Comunication.Control
                 Disconnect();
             }
 
+            Connected?.Invoke(this, null);
             return IsConnected;
         }
 
@@ -82,19 +83,21 @@ namespace ABB_Comunication.Control
             {
                 try
                 {
+                    TryStopRapidProgram(false);
                     _controller.Logoff();
                     _controller.Dispose();
                     _controller = null;
+                    Disconnected?.Invoke(this, null);
+
+                    if (appendLog)
+                    {
+                        Logger.InvokeLog($"Disconnected from controller @{ControllerInfo.IPAddress}");
+                    }
                 }
                 catch (Exception ex)
                 {
-                    Logger.InvokeLog($"An exception occured when disconnecting from controller {ControllerInfo.ControllerName}: {ex.Message}");
+                    Logger.InvokeLog($"An exception occured when disconnecting from controller @{ControllerInfo.IPAddress}: {ex.Message}");
                 }
-            }
-
-            if (appendLog)
-            {
-                Logger.InvokeLog($"Disconnected from controller {ControllerInfo.ControllerName}.");
             }
         }
     }

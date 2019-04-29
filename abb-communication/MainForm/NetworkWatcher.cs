@@ -30,8 +30,10 @@ namespace ABB_Comunication
             });
         }
 
+        private const int watcherPaddingRight = 24;
         private void RemoveLostController(ControllerInfo controllerInfo)
         {
+            Logger.InvokeLog($"Lost  @{controllerInfo.IPAddress} #{controllerInfo.Id}");
             DataGrid_Controllers.Rows.RemoveAt(getIndex());
             if (_controlUnit?.ControllerInfo.Equals(controllerInfo) ?? false)
             {
@@ -65,6 +67,7 @@ namespace ABB_Comunication
                 controllerInfo.SystemName,
                 controllerInfo.Version.ToString(),
                 controllerInfo.ControllerName);
+            Logger.InvokeLog($"Found @{controllerInfo.IPAddress} #{controllerInfo.Id}");
             DataGrid_Controllers.Rows[DataGrid_Controllers.Rows.Count - 1].Tag = controllerInfo;
         }
 

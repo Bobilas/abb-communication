@@ -29,15 +29,21 @@ namespace ABBControlUnit.UnitTest
             // Connection
             InitControlUnit();
             Assert.AreEqual(_controlUnit.TryStartRapidProgram(), true, $"Failed to start RAPID program.");
-            // Moving
+            // Home position
+            Assert.AreEqual(_controlUnit.Move(0, 0, 0), true,
+                $"Failed to move to home position.");
             var firstPos = _controlUnit.GetPosition();
+            Assert.Less(Math.Abs(firstPos.x), _maxError, "Too high of an error on the X axis. Home position.");
+            Assert.Less(Math.Abs(firstPos.y), _maxError, "Too high of an error on the Y axis. Home position.");
+            Assert.Less(Math.Abs(firstPos.z), _maxError, "Too high of an error on the Z axis. Home position.");
+            // (50, 50, 50) position
             (double x, double y, double z) posOffset = (50, 50, 50);
             Assert.AreEqual(_controlUnit.Move(firstPos.x + posOffset.x, firstPos.y + posOffset.y, firstPos.z + posOffset.z), true, 
                 $"Failed to move to specified location.");
             var secondPos = _controlUnit.GetPosition();
-            Assert.Less(Math.Abs(secondPos.x - firstPos.x - posOffset.x), _maxError, "Too high of an error on the X axis.");
-            Assert.Less(Math.Abs(secondPos.y - firstPos.y - posOffset.y), _maxError, "Too high of an error on the Y axis.");
-            Assert.Less(Math.Abs(secondPos.z - firstPos.z - posOffset.z), _maxError, "Too high of an error on the Z axis.");
+            Assert.Less(Math.Abs(secondPos.x - firstPos.x - posOffset.x), _maxError, $"Too high of an error on the X axis. ({posOffset.x}, {posOffset.y}, {posOffset.z}) position.");
+            Assert.Less(Math.Abs(secondPos.y - firstPos.y - posOffset.y), _maxError, $"Too high of an error on the Y axis. ({posOffset.x}, {posOffset.y}, {posOffset.z}) position.");
+            Assert.Less(Math.Abs(secondPos.z - firstPos.z - posOffset.z), _maxError, $"Too high of an error on the Z axis. ({posOffset.x}, {posOffset.y}, {posOffset.z}) position.");
         }
     }
 }

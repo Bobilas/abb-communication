@@ -66,14 +66,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ControlUnit\Commands\Base\OffsetMove.cs" />
-    <Compile Include="ControlUnit\Commands\Base\TimeOut.cs" />
-    <Compile Include="ControlUnit\Commands\Base\DrawPlane.cs" />
-    <Compile Include="ControlUnit\Commands\Circle.cs" />
-    <Compile Include="ControlUnit\Commands\Base\Move.cs" />
-    <Compile Include="ControlUnit\Connection.cs" />
-    <Compile Include="ControlUnit\RapidConfig.cs" />
-    <Compile Include="ControlUnit\ControlUnit.cs" />
     <Compile Include="Helper.cs" />
     <Compile Include="MainForm\ControlUnit.cs">
       <SubType>Form</SubType>
@@ -113,6 +105,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ControlUnit\ControlUnit.csproj">
+      <Project>{dc7f9027-c425-4d9e-818d-cc494d8e706f}</Project>
+      <Name>ControlUnit</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

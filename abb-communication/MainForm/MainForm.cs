@@ -1,7 +1,7 @@
 ﻿using Po.Forms.Logging;
 using System;
 using System.Windows.Forms;
-using static ABB_Comunication.Control.ControlUnit;
+using static ABBControlUnit.ControlUnit;
 
 namespace ABB_Comunication
 {
@@ -62,15 +62,15 @@ namespace ABB_Comunication
 
         private void Button_MoveByOffset_Click(object sender, EventArgs e)
         {
-            _controlUnit?.TryOffsetMove(_plane, NumericBox_OffsetX.Value, NumericBox_OffsetY.Value, NumericBox_OffsetZ.Value);
+            _controlUnit?.OffsetMove((double)NumericBox_OffsetX.Value, (double)NumericBox_OffsetY.Value, (double)NumericBox_OffsetZ.Value);
         }
         private void Button_MoveToPosition_Click(object sender, EventArgs e)
         {
-            _controlUnit?.TryMove(_plane, NumericBox_PositionX.Value, NumericBox_PositionY.Value, NumericBox_PositionZ.Value);
+            _controlUnit?.Move((double)NumericBox_PositionX.Value, (double)NumericBox_PositionY.Value, (double)NumericBox_PositionZ.Value);
         }
         private void Button_Circle_Click(object sender, EventArgs e)
         {
-            _controlUnit?.TryCircle(_plane, NumericBox_CircleRadius.Value);
+            _controlUnit?.Circle(_plane, (double)NumericBox_CircleRadius.Value);
         }
 
         private DrawPlane _plane

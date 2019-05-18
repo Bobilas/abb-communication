@@ -1,6 +1,6 @@
 ﻿using ABB.Robotics.Controllers;
 using ABB.Robotics.Controllers.RapidDomain;
-using ABB_Comunication.Control;
+using ABBControlUnit;
 
 namespace ABB_Comunication
 {
@@ -14,6 +14,12 @@ namespace ABB_Comunication
             var controllerInfo = (ControllerInfo)DataGrid_Controllers.SelectedRows[0].Tag;
             _controlUnit = new ControlUnit(controllerInfo);
             _controlUnit.ExecutionStatusChanged += ControlUnit_ExecutionStatusChanged;
+            _controlUnit.MessageCall += ControlUnit_MessageCall;
+        }
+
+        private void ControlUnit_MessageCall(string message)
+        {
+            Logger.InvokeLog(message);
         }
 
         private void ControlUnit_ExecutionStatusChanged(object sender, ExecutionStatusChangedEventArgs e)

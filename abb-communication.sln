@@ -5,6 +5,10 @@ VisualStudioVersion = 16.0.28711.60
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "abb-communication", "abb-communication\abb-communication.csproj", "{032E4118-8B0A-4195-BDB0-4EFA4734F0B8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControlUnit", "ControlUnit\ControlUnit.csproj", "{DC7F9027-C425-4D9E-818D-CC494D8E706F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControlUnit_UnitTest", "ControlUnit\ControlUnit_UnitTest\ControlUnit_UnitTest.csproj", "{7F00D29A-48FF-45E4-B9AE-76EEF24F9FE4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{032E4118-8B0A-4195-BDB0-4EFA4734F0B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{032E4118-8B0A-4195-BDB0-4EFA4734F0B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{032E4118-8B0A-4195-BDB0-4EFA4734F0B8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC7F9027-C425-4D9E-818D-CC494D8E706F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC7F9027-C425-4D9E-818D-CC494D8E706F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC7F9027-C425-4D9E-818D-CC494D8E706F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC7F9027-C425-4D9E-818D-CC494D8E706F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7F00D29A-48FF-45E4-B9AE-76EEF24F9FE4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F00D29A-48FF-45E4-B9AE-76EEF24F9FE4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F00D29A-48FF-45E4-B9AE-76EEF24F9FE4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F00D29A-48FF-45E4-B9AE-76EEF24F9FE4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

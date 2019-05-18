@@ -32,7 +32,8 @@ namespace ABBControlUnit.UnitTest
             // Moving
             var firstPos = _controlUnit.GetPosition();
             (double x, double y, double z) posOffset = (50, 50, 50);
-            Assert.AreEqual(_controlUnit.Move(posOffset.x, posOffset.y, posOffset.z), true, $"Failed to move to specified location.");
+            Assert.AreEqual(_controlUnit.Move(firstPos.x + posOffset.x, firstPos.y + posOffset.y, firstPos.z + posOffset.z), true, 
+                $"Failed to move to specified location.");
             var secondPos = _controlUnit.GetPosition();
             Assert.Less(Math.Abs(secondPos.x - firstPos.x - posOffset.x), _maxError, "Too high of an error on the X axis.");
             Assert.Less(Math.Abs(secondPos.y - firstPos.y - posOffset.y), _maxError, "Too high of an error on the Y axis.");
